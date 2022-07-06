@@ -17,16 +17,6 @@ const config = {
   },
   module: {
     rules: [
-      // {
-      //   enforce: 'pre',
-      //   test: /\.(js|jsx|ts|tsx)$/,
-      //   exclude: /(node_modules|bower_components)/,
-      //   loader: 'eslint-loader',
-      //   options: {
-      //     failOnWarning: false,
-      //     failOnError: true,
-      //   },
-      // },
       {
         test: /\.(js|jsx|ts|tsx)$/,
         exclude: /(node_modules|bower_components)/,
@@ -91,6 +81,12 @@ const config = {
           mimetype: 'application/font-otf',
           name: 'assets/fonts/[name].[ext]',
         },
+      },
+
+      // this rule handles svg
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
       },
     ],
   },
