@@ -1,10 +1,13 @@
 import React from 'react';
+import BookrySvg from '../../assets/svg/bookrySvg.jsx';
 import './navbar.scss';
 
 const Navbar = () => {
   return (
     <div className="navbar">
-      <div className="navbar-brand">Bookry</div>
+      <div className="navbar-brand">
+        <BookrySvg />
+      </div>
       <div className="nav-items">
         <ul>
           <li>Home</li>

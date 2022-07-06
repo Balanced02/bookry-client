@@ -1,8 +1,14 @@
 import React from 'react';
-import Cracked from 'components/Animation/Cracked';
+import Navbar from 'components/Navbar';
 
-import './Landing.css';
+import './Landing.scss';
 
-const Landing = () => <Cracked>bookry</Cracked>;
+const Landing = () => {
+  return (
+    <div className="container">
+      <Navbar />
+    </div>
+  );
+};
 
 export default Landing;

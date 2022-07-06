@@ -58,3 +58,10 @@ body {
     /* Only works if there is nothing absolutely positioned in relation to body */
     overflow-x: hidden;
 }
+
+.container {
+    /* 1140px */
+    max-width: 120rem;
+    padding: 0 3.2rem;
+    margin: 0 auto;
+}
