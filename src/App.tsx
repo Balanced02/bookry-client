@@ -1,17 +1,12 @@
-import React, { Suspense } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-
+import React from 'react';
+// import { BrowserRouter } from 'react-router-dom';
+import Navbar from 'components/Navbar';
 import 'theme';
 
-import Loading from 'components/Loading';
-import AppRoutes from 'routes/AppRoutes';
+// import Loading from 'components/Loading';
+// import AppRoutes from 'routes/AppRoutes';
 
-const App = () => (
-  <Suspense fallback={<Loading />}>
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
-  </Suspense>
-);
+import './assets/styles/bookry.scss';
 
+const App = () => <Navbar />;
 export default App;
