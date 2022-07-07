@@ -1,22 +1,39 @@
 import React from 'react';
-import BookrySvg from '../../assets/svg/bookrySvg.jsx';
 import './navbar.scss';
 
 const Navbar = () => {
   return (
     <div className="navbar">
-      <div className="navbar-brand">
-        <BookrySvg />
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Publish</li>
-          <li>Get Started</li>
-          <li>Read</li>
+      <a className="navbar-brand">Bookry</a>
+      <nav className="nav-items">
+        <ul className="nav-link-list">
+          <li>
+            <a className="nav-link-item" href="#">
+              Home
+            </a>
+          </li>
+          <li>
+            <a className="nav-link-item" href="#">
+              About Us
+            </a>
+          </li>
+          <li>
+            <a className="nav-link-item" href="#">
+              Publish
+            </a>
+          </li>
+          <li>
+            <a className="nav-link-item fourth-child" href="#">
+              Get Started
+            </a>
+          </li>
+          <li>
+            <a className="nav-link-item last-child" href="#">
+              Read
+            </a>
+          </li>
         </ul>
-      </div>
+      </nav>
     </div>
   );
 };

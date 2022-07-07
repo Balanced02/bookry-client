@@ -1,17 +1,17 @@
 import React from 'react';
 import './TopSection.scss';
-// import SearchIcon from '../../assets/svg/Search.svg';
-// import FilterIcon from '../../assets/svg/Filter.svg';
+import {ReactComponent as SearchIcon} from 'assets/svg/Search.svg';
+import {ReactComponent as FilterIcon} from 'assets/svg/Filter.svg';
 
 const TopSection = () => {
   return (
     <section className="section">
       <div className="search-bar">
+        <SearchIcon />
+        <FilterIcon />
         <div className="search">
           <input type="text" placeholder="Search a book, Author or review, we would find it" />
         </div>
-        {/* <SearchIcon />
-        <FilterIcon /> */}
         <div className="search-icon">SI</div>
         <div className="filter-icon">FI</div>
         <p>filter</p>
