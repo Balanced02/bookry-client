@@ -1,32 +1,41 @@
 import React from 'react';
 import './TopSection.scss';
-import {ReactComponent as SearchIcon} from 'assets/svg/Search.svg';
-import {ReactComponent as FilterIcon} from 'assets/svg/Filter.svg';
+import { ReactComponent as SearchIcon } from 'assets/svg/Search.svg';
+import { ReactComponent as FilterIcon } from 'assets/svg/Filter.svg';
 
 const TopSection = () => {
   return (
     <section className="section">
       <div className="search-bar">
-        <SearchIcon />
-        <FilterIcon />
-        <div className="search">
-          <input type="text" placeholder="Search a book, Author or review, we would find it" />
+        <div className="search-left">
+          <input type="text" className="search-box" placeholder="Search a book, Author or review, we would find it" />
+          <div className="search-icon">
+            <SearchIcon />
+          </div>
         </div>
-        <div className="search-icon">SI</div>
-        <div className="filter-icon">FI</div>
-        <p>filter</p>
+        <div className="search-right">
+          <div className="filter-icon">
+            <FilterIcon />
+          </div>
+          <p className="filter-text">Filter</p>
+        </div>
       </div>
       <div className="heading">
-        <h1>
-          <span>Great stories</span> are our passion.
-        </h1>
-        <p>
-          Sign up FREE and become a published author in less than 5 minutes. showcase your books to over 200,000 readers
-          instantly
-        </p>
-        <div className="buttons">
-          <button>Explore our library</button>
-          <button>Become an Author</button>
+        <h2 className="great-stories">Great Stories</h2>
+        <h1 className="our-passion">are our passion .</h1>
+        <div className="heading-description">
+          <p>
+            <span className="sign-up-free">Sign up FREE </span> and become a published author in less than 5 minutes.
+          </p>
+          <p>showcase your books to over 200,000 readers instantly</p>
+        </div>
+        <div className="cta-buttons">
+          <a className="btn" href="#">
+            Explore our library
+          </a>
+          <a className="btn" href="#">
+            Become an Author
+          </a>
         </div>
       </div>
     </section>
