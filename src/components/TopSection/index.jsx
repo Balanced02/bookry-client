@@ -5,7 +5,7 @@ import { ReactComponent as FilterIcon } from 'assets/svg/Filter.svg';
 
 const TopSection = () => {
   return (
-    <section className="section">
+    <section className="top-section section">
       <div className="search-bar">
         <div className="search-left">
           <input type="text" className="search-box" placeholder="Search a book, Author or review, we would find it" />
