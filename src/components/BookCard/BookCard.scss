@@ -1,0 +1,29 @@
+.card {
+  background-color: yellow;
+  padding: 0.5rem;
+  text-align: center;
+  .card-body {
+    background-color: rgb(178, 240, 248);
+    padding: 1rem;
+    display: block;
+
+    img {
+      padding: 2rem;
+      background-color: rgb(139, 218, 136);
+      width: 24.8rem;
+      height: 33.2rem;
+    }
+
+    .card-title {
+      padding: 1rem;
+      background-color: pink;
+      font-size: 1.6rem;
+    }
+
+    .rating {
+      padding: 1rem;
+      background-color: aquamarine;
+      font-size: 4rem;
+    }
+  }
+}
