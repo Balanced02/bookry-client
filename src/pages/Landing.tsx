@@ -3,7 +3,7 @@ import './Landing.scss';
 import Navbar from 'components/Navbar';
 import TopSection from 'components/TopSection';
 import BookCarousel from 'components/BookCarousel';
-import Book from 'assets/images/book.jpeg';
+// import Book from 'assets/images/book.jpeg';
 
 const Landing = () => {
   return (
