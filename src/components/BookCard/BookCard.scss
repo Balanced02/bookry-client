@@ -1,28 +1,27 @@
 .card {
-  background-color: yellow;
   padding: 0.5rem;
   text-align: center;
   .card-body {
-    background-color: rgb(178, 240, 248);
-    padding: 1rem;
+    background-color: #FFFFFF;
+    border-radius: 2rem;
+    padding: 3rem;
     display: block;
 
     img {
-      padding: 2rem;
       background-color: rgb(139, 218, 136);
-      width: 24.8rem;
-      height: 33.2rem;
+      width: 20.8rem;
+      height: 30.2rem;
+      border-radius: 2rem;
+      margin-top: -7rem;
     }
 
     .card-title {
-      padding: 1rem;
-      background-color: pink;
+      padding: 3rem 0 0rem 0;
       font-size: 1.6rem;
+      font-weight: 400;
     }
 
     .rating {
-      padding: 1rem;
-      background-color: aquamarine;
       font-size: 4rem;
     }
   }
