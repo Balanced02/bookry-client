@@ -1,0 +1,21 @@
+.book-layout {
+  display: flex;
+  main {
+    padding: 1.5rem;
+    transition: padding-left 0.3s ease 0ms;
+    &.sidebar-open {
+      padding-left: 26.5rem;
+    }
+    .book-title {
+      display: flex;
+      align-items: center;
+      .icon {
+        padding: 10px 10px 10px 0px;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+      }
+    }
+  }
+}
