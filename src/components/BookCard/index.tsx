@@ -1,13 +1,14 @@
 import React from 'react';
-import './BookCard.scss';
+import { BookT } from 'types';
+import './styles.scss';
 
-const BookCard = (props: { img: string; title: string; rating: string; ButtonText: string }) => {
+const BookCard = ({ img, title, rating }: BookT) => {
   return (
     <div className="card">
       <div className="card-body">
-        <img src={props.img} />
-        <h2 className="card-title">{props.title}</h2>
-        <p className="rating">{props.rating}</p>
+        <img src={img} />
+        <h2 className="card-title">{title}</h2>
+        <p className="rating">{rating}</p>
       </div>
     </div>
   );
