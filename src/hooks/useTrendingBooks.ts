@@ -1,17 +1,17 @@
-import { mockBooks } from "mocks"
-import { useEffect, useState } from "react"
-import { BookT } from "types"
+import { mockBooks } from 'mocks';
+import { useEffect, useState } from 'react';
+import { BookT } from 'types';
 
 export const useTrendingBooks = () => {
-  const [data, setData] = useState<Array<BookT>>([])
+  const [data, setData] = useState<Array<BookT>>([]);
 
   const getTrendingBooks = () => {
-    setData(mockBooks)
-  }
+    setData(mockBooks);
+  };
 
   useEffect(() => {
-    getTrendingBooks()
-  }, [])
+    getTrendingBooks();
+  }, []);
 
-  return { data, getTrendingBooks }
-}
+  return { data, getTrendingBooks };
+};
