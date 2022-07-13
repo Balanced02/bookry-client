@@ -1,19 +1,18 @@
 import React from 'react';
-import './BookCarousel.scss';
-import Book from 'assets/images/book.jpeg';
+import './styles.scss';
 import BookCard from 'components/BookCard';
+import { BookCarouselT } from 'types';
 
-const BookCarousel = (props: { img: string; title: string; description: string }) => {
+const BookCarousel = ({ icon, title, description, data }: BookCarouselT) => {
   return (
     <div className="category-body">
-      <img src={props.img} alt="" />
-      <h1 className="category-title">{props.title}</h1>
-      <p className="category-description">{props.description}</p>
+      <img src={icon} alt="" />
+      <h1 className="category-title">{title}</h1>
+      <p className="category-description">{description}</p>
       <div className="books">
-        <BookCard img={Book} title={'William Shakespares'} rating={'*****'} ButtonText={'button'} />
-        <BookCard img={Book} title={'William Shakespares'} rating={'*****'} ButtonText={'button'} />
-        <BookCard img={Book} title={'William Shakespares'} rating={'*****'} ButtonText={'button'} />
-        <BookCard img={Book} title={'William Shakespares'} rating={'*****'} ButtonText={'button'} />
+        {data.map((d) => (
+          <BookCard key={d.id} img={d.img} title={d.title} rating={d.rating} />
+        ))}
       </div>
     </div>
   );
