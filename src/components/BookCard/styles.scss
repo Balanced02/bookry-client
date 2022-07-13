@@ -1,0 +1,31 @@
+.card {
+  padding: 0.5rem;
+  text-align: center;
+  padding-top: 7rem;
+  .card-body {
+    background-color: #FFFFFF;
+    border-radius: 2rem;
+    padding: 3rem;
+    display: block;
+    box-shadow: 1px 0px 9px 2px rgba(0, 0, 0, 0.26);
+    -webkit-box-shadow: 1px 0px 9px 2px rgba(0, 0, 0, 0.26);
+    -moz-box-shadow: 1px 0px 9px 2px rgba(0, 0, 0, 0.26);
+
+    img {
+      width: 20.8rem;
+      height: 30.2rem;
+      border-radius: 2rem;
+      margin-top: -7rem;
+    }
+
+    .card-title {
+      padding: 3rem 0 0rem 0;
+      font-size: 1.6rem;
+      font-weight: 400;
+    }
+
+    .rating {
+      font-size: 4rem;
+    }
+  }
+}

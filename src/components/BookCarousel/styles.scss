@@ -1,0 +1,25 @@
+.category-body {
+  .category-title {
+    font-weight: 100;
+    font-size: 7rem;
+    padding: 4rem 4rem 1rem;
+  }
+
+  .category-description {
+    font-size: 1.5rem;
+    padding: 1rem;
+    width: 40%;
+    margin: auto;
+    color: #575757;
+    margin-bottom: 7rem;
+  }
+  .books {
+    display: flex;
+    gap: 0.7rem;
+    justify-content: center;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@import 'assets/styles/variables';
+
+.book-sidebar {
+  width: 25rem;
+  height: 100vh;
+  background-color: $dark-background;
+  color: $white;
+  font-size: 1.5rem;
+  left: -25rem;
+  transition: left .3s ease 0ms;
+  &.open {
+    left: 0;
+  }
+  .title-container {
+    padding: 1.5rem;
+  }
+  position: fixed;
+  .add-title {
+    padding: 1.5rem;
+    span {
+      font-weight: bold;
+      color: $primary-color;
+      cursor: pointer;
+    }
+  }
+  .title {
+    color: $white;
+  }
+}

@@ -50,7 +50,7 @@ const config = {
 
       // this rule handles images
       {
-        test: /\.jpe?g$|\.gif$|\.ico$|\.png$|\.svg$/,
+        test: /\.jpe?g$|\.gif$|\.ico$|\.png$/,
         loader: 'file-loader',
         options: {
           name: 'assets/fonts/[name].[chunkhash].[ext]',
@@ -86,7 +86,7 @@ const config = {
       // this rule handles svg
       {
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        use: ['@svgr/webpack', 'url-loader'],
       },
     ],
   },

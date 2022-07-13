@@ -50,17 +50,22 @@ html {
 }
 
 body {
-    font-family: "Montserrat";
+    font-family: 'Montserrat', sans-serif;
     line-height: 1;
-    // font-weight: 400;
-    // color: #555;
+    background-color: #FFFBEE;
+    font-size: 1.5rem;
 
     /* Only works if there is nothing absolutely positioned in relation to body */
     overflow-x: hidden;
+    input {
+        font-family: 'Montserrat', sans-serif;
+    }
+    .bg-light {
+        background-color: rgba(255, 255, 255, 0.1);;
+      }
 }
 
 .container {
-    /* 1140px */
     max-width: 120rem;
     padding: 0 3.2rem;
     margin: 0 auto;
