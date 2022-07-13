@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles.scss';
 import { ReactComponent as SearchIcon } from 'assets/svg/Search.svg';
 import { ReactComponent as FilterIcon } from 'assets/svg/Filter.svg';
 import './TopSection.scss';
