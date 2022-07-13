@@ -1,25 +1,29 @@
 import React from 'react';
-import './TopSection.scss';
+import './topsection.scss';
 import { ReactComponent as SearchIcon } from 'assets/svg/Search.svg';
 import { ReactComponent as FilterIcon } from 'assets/svg/Filter.svg';
 
 const TopSection = () => {
   return (
     <section className="top-section section">
-      <div className="search-bar">
-        <div className="search-left">
-          <input type="text" className="search-box" placeholder="Search a book, Author or review, we would find it" />
-          <div className="search-icon">
-            <SearchIcon />
+      <form action="" method="post">
+        <div className="search-bar">
+          <div className="search-left">
+            <input type="text" className="search-box" placeholder="Search a book, Author or review, we would find it" />
+            <div className="search-icon">
+              <a href="#">
+                <SearchIcon />
+              </a>
+            </div>
+          </div>
+          <div className="search-right">
+            <div className="filter-icon">
+              <FilterIcon />
+            </div>
+            <p className="filter-text">Filter</p>
           </div>
         </div>
-        <div className="search-right">
-          <div className="filter-icon">
-            <FilterIcon />
-          </div>
-          <p className="filter-text">Filter</p>
-        </div>
-      </div>
+      </form>
       <div className="heading">
         <h2 className="great-stories">Great Stories</h2>
         <h1 className="our-passion">are our passion .</h1>
