@@ -1,0 +1,95 @@
+@import 'assets/styles/variables';
+.signup-constainer {
+  display: flex;
+  background-color: $white;
+  height: 100vh;
+  padding: 5rem;
+  main {
+    flex: 1%;
+    .navbar-brand {
+      font-size: 4rem;
+      font-weight: 800;
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: black;
+      color: white;
+      cursor: pointer;
+    }
+    .welcome-note {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      //   background-color: $dark-background;
+      .centerDiv {
+        justify-content: center;
+        .svgIcon {
+          display: flex;
+          justify-content: center;
+        }
+        .head-text {
+          display: flex;
+          margin-top: -5rem;
+          justify-content: center;
+          .welcome {
+            font-size: 3rem;
+            padding-right: 1rem;
+          }
+          .bookry {
+            font-size: 3rem;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: black;
+            color: white;
+          }
+        }
+        .text {
+          font-size: 1.5rem;
+          padding: 3rem 10rem;
+          text-align: center;
+        }
+      }
+    }
+    .signup-form {
+      padding: 4rem;
+      // background-color: $dark-background;
+      .strike {
+        display: block;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap;
+        margin: 5rem 8rem;
+      }
+      .strike > span {
+        position: relative;
+        display: inline-block;
+      }
+      .strike > span:before,
+      .strike > span:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 9999px;
+        height: 1px;
+        background: $gray;
+      }
+      .strike > span:before {
+        right: 100%;
+        margin-right: 15px;
+      }
+      .strike > span:after {
+        left: 100%;
+        margin-left: 15px;
+      }
+      .input-form {
+        padding: 3rem 0;
+      }
+      .sign-in {
+        text-align: center;
+        margin: 3rem 0;
+        span {
+          color: $primary-color;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

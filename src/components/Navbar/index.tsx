@@ -1,7 +1,8 @@
 import React from 'react';
 import './styles.scss';
-
+import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
+  const navigate = useNavigate();
   return (
     <div className="navbar">
       <a className="navbar-brand">Bookry</a>
@@ -23,7 +24,7 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a className="nav-link-item fourth-child" href="#">
+            <a className="nav-link-item fourth-child" onClick={() => navigate('/signup')}>
               Get Started
             </a>
           </li>

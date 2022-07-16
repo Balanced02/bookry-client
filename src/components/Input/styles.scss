@@ -1,0 +1,25 @@
+@import 'assets/styles/variables';
+.input-container {
+  width: 100%;
+  input {
+    height: 100%;
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 1rem;
+    background-color: $white;
+    border: 2px solid $dark-background;
+    border-radius: 0.5rem;
+    &:focus {
+      border: 1px solid $success;
+    }
+    &:disabled {
+      background: $gray;
+    }
+    &.success {
+      border: 1px solid $success;
+    }
+    &.error {
+      border: 1px solid $error;
+    }
+  }
+}
