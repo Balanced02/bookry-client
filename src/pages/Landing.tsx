@@ -4,6 +4,7 @@ import Navbar from 'components/Navbar';
 import TopSection from 'components/TopSection';
 import BookCarousel from 'components/BookCarousel';
 import { useTrendingBooks } from 'hooks/useTrendingBooks';
+import DownloadSection from 'components/DownloadSection';
 
 const Landing = () => {
   const trendingBooks = useTrendingBooks();
@@ -31,6 +32,7 @@ const Landing = () => {
           data={trendingBooks.data}
         />
       </div>
+      <DownloadSection />
     </div>
   );
 };
