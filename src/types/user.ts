@@ -1,5 +1,5 @@
 export type ProfileT = {
-  fullName: string
-  profilePic: string
-  email: string
-}
+  fullName: string;
+  profilePic: string;
+  email: string;
+};
