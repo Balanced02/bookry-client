@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import BookSidebar from 'components/BookSidebar';
 import { ReactComponent as ChevronLeft } from 'assets/svg/ChevronLeft.svg';
 import { ReactComponent as ChevronRight } from 'assets/svg/ChevronRight.svg';
+import BookEditor from 'components/BookEditor';
 import './styles.scss';
 
 const BookLayout = () => {
@@ -21,7 +22,7 @@ const BookLayout = () => {
           </button>
           <h3>Book Title Here</h3>
         </div>
-        <p onClick={() => setIsOpen(!isOpen)}>hey</p>
+        <BookEditor />
       </main>
     </div>
   );

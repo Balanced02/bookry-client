@@ -1,6 +1,7 @@
 .book-layout {
   display: flex;
   main {
+    flex: 1;
     padding: 1.5rem;
     transition: padding-left 0.3s ease 0ms;
     &.sidebar-open {
