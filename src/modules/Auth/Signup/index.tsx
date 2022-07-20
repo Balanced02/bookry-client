@@ -43,7 +43,14 @@ const Signup = () => {
             <span>Or</span>
           </div>
           <div className="input-form">
-            <Input value={message} label="Name" type="text" name="FirstName" handleChange={handleInputChange} />
+            <Input
+              value={message}
+              label="Name"
+              type="text"
+              icon={<EyeOpen />}
+              name="FirstName"
+              handleChange={handleInputChange}
+            />
           </div>
           <Button text="SIGN UP" type="light" onPress={() => console.log('Okey')} />
           <p className="sign-in">

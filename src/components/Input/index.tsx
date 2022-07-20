@@ -1,28 +1,9 @@
 import React, { useState } from 'react';
-import { ReactComponent as EyeOpen } from 'assets/svg/EyeOpen.svg';
+import { InputType } from 'types';
 import './styles.scss';
 
-export type InputType = {
-  value: string | number;
-  label: string;
-  type: string;
-  name: string;
-  error?: string;
-  max?: number;
-  min?: number;
-  disabled?: boolean;
-  showOnInput?: boolean;
-  handleChange: (event: { target: { value: React.SetStateAction<string> } }) => void;
-};
-
-const Input = ({ value, label, type, name, min, max, error, disabled, showOnInput, handleChange }: InputType) => {
+const Input = ({ value, label, type, name, min, icon, max, error, disabled, onIcon, handleChange }: InputType) => {
   const [inputType, setInputType] = useState<string>(type);
-
-  const inputFocused = () => {
-    if (type === 'password' && showOnInput) {
-      setInputType('text');
-    }
-  };
 
   const inputBlurred = () => {
     if (type === 'password') {
@@ -44,12 +25,15 @@ const Input = ({ value, label, type, name, min, max, error, disabled, showOnInpu
             min={min}
             disabled={disabled}
             onChange={handleChange}
-            onFocus={inputFocused}
             onBlur={inputBlurred}
           />
           <span className="input-lable">{label}</span>
         </label>
-        {showOnInput ? <div className="icon">{showOnInput ? <EyeOpen /> : null}</div> : null}
+        {icon ? (
+          <div className="icon" onClick={onIcon}>
+            {icon}
+          </div>
+        ) : null}
       </div>
     </div>
   );

@@ -45,7 +45,6 @@
       .input:not(:placeholder-shown) ~ .input-lable {
         background-color: $white;
         opacity: 1;
-        color: $success;
         top: -0.8rem;
       }
     }
