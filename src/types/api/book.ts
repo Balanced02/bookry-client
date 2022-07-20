@@ -1,6 +1,7 @@
 export type ChapterA = {
+  _id?: string;
   title: string;
-  body: string;
+  body?: string;
 };
 
 export interface BookA {
