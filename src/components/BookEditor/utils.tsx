@@ -27,3 +27,9 @@ export const handleKeyBindings = (
 
   return 'not-handled';
 };
+
+export const styleMap = {
+  HIGHLIGHT: {
+    backgroundColor: '#F2C94C',
+  }
+};

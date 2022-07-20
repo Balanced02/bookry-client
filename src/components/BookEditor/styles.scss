@@ -1,8 +1,13 @@
+@import 'assets/styles/variables';
+
 .book-editor {
   .editor-container {
     min-height: 80vh;
     padding: 40px;
     line-height: 2.5rem;
+    .inline-toolbar {
+      background-color: $dark-background;
+    }
   }
   .title-container {
     text-align: center;
