@@ -1037,6 +1037,15 @@
   dependencies:
     clsx "^1.0.4"
 
+"@draft-js-plugins/counter@^4.1.2":
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/@draft-js-plugins/counter/-/counter-4.1.2.tgz#219cd173507bd56ea6c5b674e292fa6f75f64750"
+  integrity sha512-08XPxRs7NMCRp8aFldgl4PprR3o+HG9iCkVMLX2CPGrSH4cO3W9RsUvB2ZEchdORLfF9OiFCY1+TbWC4VVeLkQ==
+  dependencies:
+    clsx "^1.0.4"
+    prop-types "^15.8.1"
+    punycode "^2.0.1"
+
 "@draft-js-plugins/editor@^4.1.3":
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/@draft-js-plugins/editor/-/editor-4.1.3.tgz#460d70d3b639d17f4e1f15b7d180b8c8698b1ec1"
@@ -1044,14 +1053,6 @@
   dependencies:
     immutable "~3.7.4"
     prop-types "^15.8.1"
-
-"@draft-js-plugins/focus@^4.1.3":
-  version "4.1.3"
-  resolved "https://registry.yarnpkg.com/@draft-js-plugins/focus/-/focus-4.1.3.tgz#6dc0516c7c57678b629af45eb703620cb79ee95d"
-  integrity sha512-0VWROy2pUT0gK81XJmupT/SvdV9GnPv3dOL89sidZxFBj00LQt+eLnBAv+4dhOokgmlUnBRBqRPvbhlw0nBEfA==
-  dependencies:
-    clsx "^1.0.4"
-    immutable "~3.7.4"
 
 "@draft-js-plugins/inline-toolbar@^4.1.6":
   version "4.1.6"
@@ -7817,7 +7818,7 @@ punycode@^1.3.2:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
   integrity sha512-jmYNElW7yvO7TV33CjSmvSiE2yco3bV2czu/OzDKdMNVZQWfxCblURLhf+47syQRBntjfLdd/H0egrzIG+oaFQ==
 
-punycode@^2.1.0, punycode@^2.1.1:
+punycode@^2.0.1, punycode@^2.1.0, punycode@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==

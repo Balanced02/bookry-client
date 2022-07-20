@@ -31,5 +31,5 @@ export const handleKeyBindings = (
 export const styleMap = {
   HIGHLIGHT: {
     backgroundColor: '#F2C94C',
-  }
+  },
 };
