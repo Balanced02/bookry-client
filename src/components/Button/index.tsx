@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
+import { ButtonProps } from 'types';
 import './styles.scss';
-
-type ButtonProps = {
-  text: string;
-  onPress: () => void;
-  type?: string;
-  loading?: boolean;
-  disabled?: boolean;
-};
 
 const Button = ({ text, onPress, type, loading, disabled }: ButtonProps) => {
   const [shake, setShake] = useState<boolean>(false);
