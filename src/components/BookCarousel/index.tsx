@@ -3,16 +3,18 @@ import './styles.scss';
 import BookCard from 'components/BookCard';
 import { BookCarouselT } from 'types';
 
-const BookCarousel = ({ icon, title, description, data }: BookCarouselT) => {
+const BookCarousel = ({ icon, title, description, books }: BookCarouselT) => {
   return (
     <div className="category-body">
-      <img src={icon} alt="" />
-      <h1 className="category-title">{title}</h1>
-      <p className="category-description">{description}</p>
-      <div className="books">
-        {data.map((d) => (
-          <BookCard key={d.id} img={d.img} title={d.title} rating={d.rating} />
-        ))}
+      {icon}
+      <div>
+        <h1 className="category-title">{title}</h1>
+        <p className="category-description">{description}</p>
+        <div className="books">
+          {books.map((book) => (
+            <BookCard key={book.id} img={book.img} title={book.title} rating={book.rating} />
+          ))}
+        </div>
       </div>
     </div>
   );
