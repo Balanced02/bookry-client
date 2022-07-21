@@ -6,6 +6,7 @@ export type InputType = {
   type: string;
   name: string;
   error?: string;
+  className?: string;
   max?: number;
   min?: number;
   disabled?: boolean;
