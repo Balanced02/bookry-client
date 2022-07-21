@@ -17,7 +17,7 @@ const Input = ({ value, label, type, name, min, icon, max, error, disabled, onIc
           <input
             type={inputType}
             name={name}
-            className={`input ${error ? 'error' : ''}`}
+            className={`input ${error ? 'error' : ''} ${disabled ? 'disabled' : null}`}
             placeholder=" "
             autoComplete="off"
             value={value}

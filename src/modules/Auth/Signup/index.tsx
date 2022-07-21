@@ -3,6 +3,7 @@ import './styles.scss';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Register } from 'assets/svg/Auth.svg';
 import { ReactComponent as EyeOpen } from 'assets/svg/EyeOpen.svg';
+import { ReactComponent as Google } from 'assets/svg/Google.svg';
 import Button from 'components/Button';
 import Input from 'components/Input';
 
@@ -38,7 +39,7 @@ const Signup = () => {
       </main>
       <main className="">
         <div className="signup-form">
-          <Button text="Google Play" type="light" onPress={() => console.log('Okey')} />
+          <Button text="Google Play" type="light" icon={<Google />} onPress={() => console.log('Okey')} />
           <div className="strike">
             <span>Or</span>
           </div>

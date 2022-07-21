@@ -21,7 +21,7 @@
           outline: none;
         }
         &:disabled {
-          background: $gray;
+          background: $light-gray;
         }
         &.success {
           border: 1px solid $success;

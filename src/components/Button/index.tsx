@@ -1,26 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ButtonProps } from 'types';
 import './styles.scss';
 
-const Button = ({ text, onPress, type, loading, disabled }: ButtonProps) => {
+const Button = ({ text, onPress, type, icon, loading, disabled }: ButtonProps) => {
+  const timerRef = useRef<null | ReturnType<typeof setTimeout>>(null);
   const [shake, setShake] = useState<boolean>(false);
+
   const shakeTimer = () => {
     setShake(!shake);
-    const toggle = setTimeout(() => setShake(false), 1000);
-    return () => {
-      clearTimeout(toggle);
-    };
+    timerRef.current = setTimeout(() => setShake(false), 1000);
   };
+
+  const stopTimer = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+  };
+
+  useEffect(() => {
+    stopTimer();
+  }, []);
+
   return (
-    <div
-      className={`button-container ${type && type}-bg ${shake ? 'shake' : null}`}
+    <button
+      className={`button-container ${type && type}-bg ${shake ? 'shake' : null}}`}
       onClick={() => {
         onPress();
         shakeTimer();
       }}
+      disabled={loading || disabled}
     >
-      <p className={`text-style ${type && type}-text`}>{text}</p>
-    </div>
+      {icon && icon}
+      {text && <p className={`text-style ${type && type}-text`}>{text}</p>}
+    </button>
   );
 };
 
