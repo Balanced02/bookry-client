@@ -2,14 +2,27 @@ import React, { useState } from 'react';
 import { InputType } from 'types';
 import './styles.scss';
 
-const Input = ({ value, label, type, name, min, icon, max, error, disabled, onIcon, handleChange }: InputType) => {
+const Input = ({
+  value,
+  label,
+  type,
+  name,
+  min,
+  icon,
+  max,
+  error,
+  disabled,
+  className,
+  onIcon,
+  handleChange,
+}: InputType) => {
   const [inputType, setInputType] = useState<string>(type);
 
   const inputBlurred = () => type === 'password' && setInputType(type);
 
   return (
     <div className="input-container">
-      <div className="input-holder">
+      <div className={`input-holder ${className}`}>
         <label className="input-label">
           <input
             type={inputType}
