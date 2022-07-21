@@ -6,6 +6,7 @@ import BookCarousel from 'components/BookCarousel';
 import { useTrendingBooks } from 'hooks/useTrendingBooks';
 import DownloadSection from 'components/DownloadSection';
 import { ReactComponent as TrendingBooksIcon } from 'assets/svg/TrendingBooksIcon.svg';
+import OurTeam from 'components/OurTeam';
 
 const Landing = () => {
   const trendingBooks = useTrendingBooks();
@@ -53,6 +54,7 @@ const Landing = () => {
         />
       </div>
       <DownloadSection />
+      <OurTeam />
     </div>
   );
 };

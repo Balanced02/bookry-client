@@ -1,2 +1,2 @@
-export * from './useProfile'
-export * from './useTrendingBooks'
+export * from './useProfile';
+export * from './useTrendingBooks';
