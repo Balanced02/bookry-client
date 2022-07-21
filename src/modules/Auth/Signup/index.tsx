@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import './styles.scss';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Register } from 'assets/svg/Auth.svg';
-import { ReactComponent as FilterIcon } from 'assets/svg/Filter.svg';
+import { ReactComponent as EyeOpen } from 'assets/svg/EyeOpen.svg';
+import { ReactComponent as Google } from 'assets/svg/Google.svg';
 import Button from 'components/Button';
 import Input from 'components/Input';
 
 const Signup = () => {
   const navigate = useNavigate();
+  const [message, setMessage] = useState<string>('');
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setMessage(value);
+  };
   return (
     <div className="signup-constainer">
       <main className="">
@@ -32,12 +38,19 @@ const Signup = () => {
       </main>
       <main className="">
         <div className="signup-form">
-          <Button text="Google Play" type="light" onPress={() => console.log('Okey')} />
+          <Button text="Google Play" type="light" icon={<Google />} onPress={() => console.log('Okey')} />
           <div className="strike">
             <span>Or</span>
           </div>
           <div className="input-form">
-            <Input />
+            <Input
+              value={message}
+              label="Name"
+              type="text"
+              icon={<EyeOpen />}
+              name="FirstName"
+              handleChange={handleInputChange}
+            />
           </div>
           <Button text="SIGN UP" type="light" onPress={() => console.log('Okey')} />
           <p className="sign-in">
