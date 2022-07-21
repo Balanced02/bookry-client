@@ -1,18 +1,39 @@
 import React, { ChangeEvent, useState } from 'react';
-import './styles.scss';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Register } from 'assets/svg/Auth.svg';
 import { ReactComponent as EyeOpen } from 'assets/svg/EyeOpen.svg';
 import { ReactComponent as Google } from 'assets/svg/Google.svg';
 import Button from 'components/Button';
 import Input from 'components/Input';
+import { SignupInputs, SignupInputError } from 'types';
+import './styles.scss';
 
 const Signup = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState<string>('');
+  const [formValues, setFormValues] = useState<SignupInputs>({
+    fullName: '',
+    email: '',
+    password: '',
+    referal: '',
+  });
+  const [formErrors, setFormErrors] = useState<SignupInputError>({
+    fullNameError: '',
+    emailError: '',
+    passwordError: '',
+    referalError: '',
+  });
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    setMessage(value);
+    const { name, value } = event.target;
+    const formErrorName = `${name}Error`;
+    setFormValues((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+    setFormErrors((prevState) => ({
+      ...prevState,
+      [formErrorName]: '',
+    }));
   };
   return (
     <div className="signup-constainer">
@@ -43,14 +64,37 @@ const Signup = () => {
             <span>Or</span>
           </div>
           <div className="input-form">
-            <Input
-              value={message}
-              label="Name"
-              type="text"
-              icon={<EyeOpen />}
-              name="FirstName"
-              handleChange={handleInputChange}
-            />
+            <div className="input-layout">
+              <Input value={formValues.email} label="Email" type="text" name="email" handleChange={handleInputChange} />
+            </div>
+            <div className="input-layout">
+              <Input
+                value={formValues.fullName}
+                label="Full Name"
+                type="text"
+                name="fullName"
+                handleChange={handleInputChange}
+              />
+            </div>
+            <div className="input-layout">
+              <Input
+                value={formValues.password}
+                label="Password"
+                type="text"
+                name="password"
+                icon={<EyeOpen />}
+                handleChange={handleInputChange}
+              />
+            </div>
+            <div className="input-layout">
+              <Input
+                value={formValues.referal}
+                label="Referral Code (If any)"
+                type="text"
+                name="referal"
+                handleChange={handleInputChange}
+              />
+            </div>
           </div>
           <Button text="SIGN UP" type="light" onPress={() => console.log('Okey')} />
           <p className="sign-in">

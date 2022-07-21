@@ -53,7 +53,7 @@
         text-align: center;
         overflow: hidden;
         white-space: nowrap;
-        margin: 5rem 8rem;
+        margin: 5rem 8rem 2rem 8rem;
       }
       .strike > span {
         position: relative;
@@ -78,6 +78,11 @@
       }
       .input-form {
         padding: 3rem 0;
+        .input-layout {
+          padding: 2rem 0;
+          max-width: 50rem;
+          justify-content: center;
+        }
       }
       .sign-in {
         text-align: center;
