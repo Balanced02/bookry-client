@@ -59,7 +59,13 @@ const Signup = () => {
       </main>
       <main className="">
         <div className="signup-form">
-          <Button text="Google Play" type="light" icon={<Google />} onPress={() => console.log('Okey')} />
+          <Button
+            text="Google Play"
+            type="light"
+            icon={<Google />}
+            onPress={() => console.log('Okey')}
+            className="google-button"
+          />
           <div className="strike">
             <span>Or</span>
           </div>
@@ -96,7 +102,7 @@ const Signup = () => {
               />
             </div>
           </div>
-          <Button text="SIGN UP" type="light" onPress={() => console.log('Okey')} />
+          <Button text="SIGN UP" className="signup-button" type="light" onPress={() => console.log('Okey')} />
           <p className="sign-in">
             Already have an Account? <span onClick={() => navigate('/')}>Sign in</span>
           </p>

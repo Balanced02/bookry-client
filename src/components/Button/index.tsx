@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { ButtonProps } from 'types';
 import './styles.scss';
 
-const Button = ({ text, onPress, type, icon, loading, disabled }: ButtonProps) => {
+const Button = ({ text, onPress, type, icon, loading, disabled, className }: ButtonProps) => {
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
   const [shake, setShake] = useState<boolean>(false);
 
@@ -17,7 +17,7 @@ const Button = ({ text, onPress, type, icon, loading, disabled }: ButtonProps) =
 
   return (
     <button
-      className={`button-container ${type && type}-bg ${shake ? 'shake' : null}}`}
+      className={`button-container ${type && type}-bg ${shake ? 'shake' : null}} ${className}`}
       onClick={() => {
         onPress();
         shakeTimer();

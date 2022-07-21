@@ -7,4 +7,5 @@ export type ButtonProps = {
   icon?: ReactNode;
   loading?: boolean;
   disabled?: boolean;
+  className?: string;
 };

@@ -55,6 +55,17 @@
         white-space: nowrap;
         margin: 5rem 8rem 2rem 8rem;
       }
+      .google-button {
+        p {
+          color: $secondary-color;
+        }
+      }
+      .signup-button {
+        background-color: $dark;
+        p {
+          color: $white;
+        }
+      }
       .strike > span {
         position: relative;
         display: inline-block;
