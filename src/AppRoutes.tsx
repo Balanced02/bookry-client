@@ -1,8 +1,8 @@
-import DashboardLayout from 'layout/BookLayout';
-import Landing from 'pages/Landing';
-import Signup from 'modules/Auth/Signup';
 import React from 'react';
 import { Route, Routes } from 'react-router';
+import Landing from 'pages/Landing';
+import DashboardLayout from 'layout/BookLayout';
+import Signup from 'modules/Auth/Signup';
 
 const AppRoutes = () => {
   return (

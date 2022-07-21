@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, ChangeEvent } from 'react';
 
 export type InputType = {
   value: string | number;
@@ -11,5 +11,5 @@ export type InputType = {
   disabled?: boolean;
   icon?: ReactNode;
   onIcon?: () => void;
-  handleChange: (event: { target: { value: React.SetStateAction<string> } }) => void;
+  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
 };

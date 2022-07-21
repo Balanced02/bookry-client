@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import './styles.scss';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Register } from 'assets/svg/Auth.svg';
@@ -10,10 +10,9 @@ import Input from 'components/Input';
 const Signup = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState<string>('');
-  const handleInputChange = (event: { target: { value: React.SetStateAction<string> } }) => {
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setMessage(value);
-    console.log('value', value);
   };
   return (
     <div className="signup-constainer">

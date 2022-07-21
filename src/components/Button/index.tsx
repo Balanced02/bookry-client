@@ -3,7 +3,7 @@ import { ButtonProps } from 'types';
 import './styles.scss';
 
 const Button = ({ text, onPress, type, icon, loading, disabled }: ButtonProps) => {
-  const timerRef = useRef<null | ReturnType<typeof setTimeout>>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout>>();
   const [shake, setShake] = useState<boolean>(false);
 
   const shakeTimer = () => {
@@ -11,14 +11,8 @@ const Button = ({ text, onPress, type, icon, loading, disabled }: ButtonProps) =
     timerRef.current = setTimeout(() => setShake(false), 1000);
   };
 
-  const stopTimer = () => {
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-    }
-  };
-
   useEffect(() => {
-    stopTimer();
+    return () => clearTimeout(timerRef.current);
   }, []);
 
   return (

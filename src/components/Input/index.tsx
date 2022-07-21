@@ -5,11 +5,8 @@ import './styles.scss';
 const Input = ({ value, label, type, name, min, icon, max, error, disabled, onIcon, handleChange }: InputType) => {
   const [inputType, setInputType] = useState<string>(type);
 
-  const inputBlurred = () => {
-    if (type === 'password') {
-      setInputType(type);
-    }
-  };
+  const inputBlurred = () => type === 'password' && setInputType(type);
+
   return (
     <div className="input-container">
       <div className="input-holder">
