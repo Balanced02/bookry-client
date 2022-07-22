@@ -5,12 +5,13 @@ import { ReactComponent as EyeOpen } from 'assets/svg/EyeOpen.svg';
 import { ReactComponent as Google } from 'assets/svg/Google.svg';
 import Button from 'components/Button';
 import Input from 'components/Input';
+import Checkbox from 'components/Checkbox';
 import { SignupInputs, SignupInputError } from 'types';
 import './styles.scss';
 
 const Signup = () => {
   const navigate = useNavigate();
-  const [message, setMessage] = useState<string>('');
+  const [isChecked, setIsChecked] = useState<boolean>(false);
   const [formValues, setFormValues] = useState<SignupInputs>({
     fullName: '',
     email: '',
@@ -34,6 +35,38 @@ const Signup = () => {
       ...prevState,
       [formErrorName]: '',
     }));
+  };
+
+  const handleCheckChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = event.target;
+    setIsChecked(checked);
+  };
+
+  const handleSignup = () => {
+    const newError: any = {};
+    let key: keyof typeof formValues;
+    let formErrorName: keyof typeof newError;
+    for (key in formValues) {
+      if (!formValues[key]) {
+        formErrorName = `${key}Error`;
+        newError[formErrorName] = 'Please provide a value';
+      }
+    }
+    setFormErrors(newError);
+    if (isChecked === false) {
+      console.log('Checkbox must be CHECKED Dommy!');
+      return;
+    }
+    if (!Object.keys(newError).length) {
+      const formData = {
+        fullName: formValues.fullName,
+        email: formValues.email,
+        password: formValues.password,
+        referal: formValues.referal,
+      };
+      console.log('formData', formData);
+      // Call your endpoint below
+    }
   };
   return (
     <div className="signup-constainer">
@@ -71,7 +104,14 @@ const Signup = () => {
           </div>
           <div className="input-form">
             <div className="input-layout">
-              <Input value={formValues.email} label="Email" type="text" name="email" handleChange={handleInputChange} />
+              <Input
+                value={formValues.email}
+                label="Email"
+                type="text"
+                name="email"
+                handleChange={handleInputChange}
+                error={formErrors.emailError}
+              />
             </div>
             <div className="input-layout">
               <Input
@@ -80,16 +120,18 @@ const Signup = () => {
                 type="text"
                 name="fullName"
                 handleChange={handleInputChange}
+                error={formErrors.fullNameError}
               />
             </div>
             <div className="input-layout">
               <Input
                 value={formValues.password}
                 label="Password"
-                type="text"
+                type="password"
                 name="password"
                 icon={<EyeOpen />}
                 handleChange={handleInputChange}
+                error={formErrors.passwordError}
               />
             </div>
             <div className="input-layout">
@@ -99,10 +141,20 @@ const Signup = () => {
                 type="text"
                 name="referal"
                 handleChange={handleInputChange}
+                error={formErrors.referalError}
               />
             </div>
+            <div className="check-row">
+              <Checkbox
+                label="I agree to the"
+                className={isChecked ? '' : 'check-error'}
+                isChecked={isChecked}
+                handleChange={handleCheckChange}
+              />
+              <span>Terms of Services</span>
+            </div>
           </div>
-          <Button text="SIGN UP" className="signup-button" type="light" onPress={() => console.log('Okey')} />
+          <Button text="SIGN UP" className="signup-button" type="light" onPress={handleSignup} />
           <p className="sign-in">
             Already have an Account? <span onClick={() => navigate('/')}>Sign in</span>
           </p>
