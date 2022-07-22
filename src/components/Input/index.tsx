@@ -45,6 +45,7 @@ const Input = ({
           </div>
         ) : null}
       </div>
+      {error && <p className="error-label">{error}</p>}
     </div>
   );
 };
