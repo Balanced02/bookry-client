@@ -1,0 +1,41 @@
+@import 'assets/styles/variables';
+.button-container {
+    background-color: $white;
+    width: 100%;
+    box-shadow: 1px 0px 9px 2px rgba(0, 0, 0, 0.26);
+    -webkit-box-shadow: 1px 0px 9px 2px rgba(0, 0, 0, 0.26);
+    -moz-box-shadow: 1px 0px 9px 2px rgba(0, 0, 0, 0.26);
+    padding: 1.5rem 1rem;
+    border-width: 0px;
+    border-radius: 0.5rem;
+    margin: 0;
+    transition: padding .3s  ease-in-out 0ms;
+    transition: margin .3s  ease-in-out 0ms;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &.light-bg {
+        background-color: $white;
+    }
+    &.dark-bg {
+        background-color: $dark-background;
+    }
+    &.shake {
+        padding: 1rem 0.5rem;
+        margin: 0 1rem;
+    }
+    .text-style {
+        text-align: center;
+        color: $dark-background;
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding: 0 1rem;
+        &.light-text {
+            color: $dark-background;
+        }
+        &.dark-text {
+            color: $white;
+        }
+    }
+}
