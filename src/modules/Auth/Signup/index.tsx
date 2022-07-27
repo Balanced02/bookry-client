@@ -43,7 +43,7 @@ const Signup = () => {
   };
 
   const handleSignup = () => {
-    const newError: any = {};
+    const newError: SignupInputError = {};
     let key: keyof typeof formValues;
     let formErrorName: keyof typeof newError;
     for (key in formValues) {

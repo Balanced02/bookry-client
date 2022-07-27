@@ -6,8 +6,8 @@ export type SignupInputs = {
 };
 
 export type SignupInputError = {
-  fullNameError: string;
-  emailError: string;
-  passwordError: string;
-  referalError: string;
+  fullNameError?: string;
+  emailError?: string;
+  passwordError?: string;
+  referalError?: string;
 };
