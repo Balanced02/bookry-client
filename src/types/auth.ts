@@ -3,8 +3,8 @@ import { Dispatch } from 'react';
 export type AuthContextState = {
   fullName: string;
   email: string;
-  password: string;
-  referal: string;
+  token: string;
+  avatarUrl: string;
 };
 
 export type AuthActionType = { type: string; payload: AuthContextState };

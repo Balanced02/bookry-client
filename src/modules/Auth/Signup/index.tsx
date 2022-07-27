@@ -38,7 +38,7 @@ const Signup = () => {
   };
 
   const handleCheckChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, checked } = event.target;
+    const { checked } = event.target;
     setIsChecked(checked);
   };
 
@@ -54,7 +54,7 @@ const Signup = () => {
     }
     setFormErrors(newError);
     if (isChecked === false) {
-      console.log('Checkbox must be CHECKED Dommy!');
+      // TODO: Call error toast function
       return;
     }
     if (!Object.keys(newError).length) {
@@ -64,8 +64,7 @@ const Signup = () => {
         password: formValues.password,
         referal: formValues.referal,
       };
-      console.log('formData', formData);
-      // Call your endpoint below
+      // TODO: Call endpoint
     }
   };
   return (

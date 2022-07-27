@@ -5,8 +5,8 @@ import { FETCH_ACCOUNT, LOG_OUT } from './types';
 const initialState: AuthContextState = {
   fullName: '',
   email: '',
-  password: '',
-  referal: '',
+  token: '',
+  avatarUrl: '',
 };
 
 export function authReducer(state: AuthContextState, action: AuthActionType) {
@@ -17,8 +17,8 @@ export function authReducer(state: AuthContextState, action: AuthActionType) {
         ...state,
         fullName: payload.fullName,
         email: payload.email,
-        password: payload.password,
-        referal: payload.referal,
+        token: payload.token,
+        avatarUrl: payload.avatarUrl,
       };
     case LOG_OUT:
       localStorage.setItem('@auth', JSON.stringify(initialState));
@@ -26,8 +26,8 @@ export function authReducer(state: AuthContextState, action: AuthActionType) {
         ...state,
         fullName: '',
         email: '',
-        password: '',
-        referal: '',
+        token: '',
+        avatarUrl: '',
       };
     default:
       return state;
