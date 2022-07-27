@@ -4,3 +4,4 @@ export * from './button';
 export * from './input';
 export * from './signup';
 export * from './checkbox';
+export * from './auth';
