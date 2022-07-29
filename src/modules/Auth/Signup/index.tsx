@@ -8,9 +8,11 @@ import Input from 'components/Input';
 import Checkbox from 'components/Checkbox';
 import { SignupInputs, SignupInputError } from 'types';
 import './styles.scss';
+import useSignup from '../hooks/useSignup';
 
 const Signup = () => {
   const navigate = useNavigate();
+  const { signupFunc } = useSignup();
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [formValues, setFormValues] = useState<SignupInputs>({
     fullName: '',
@@ -65,6 +67,7 @@ const Signup = () => {
         referal: formValues.referal,
       };
       // TODO: Call endpoint
+      signupFunc(formData);
     }
   };
   return (
