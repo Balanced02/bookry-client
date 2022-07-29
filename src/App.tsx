@@ -11,7 +11,7 @@ const App = () => {
   const auth = useAuthController();
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthContext.Provider value={{ state: auth.state, dispatch: auth.dispatch }}>
+      <AuthContext.Provider value={{ ...auth.state, dispatch: auth.dispatch }}>
         <Suspense>
           <BrowserRouter>
             <AppRoutes />

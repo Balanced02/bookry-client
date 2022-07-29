@@ -1,4 +1,4 @@
-import React from 'react';
+import { useContext } from 'react';
 import axios from 'axios';
 import AuthContext from '../modules/Auth/context/AuthContext';
 
@@ -11,13 +11,14 @@ export type ApiCallTypes = {
   passedToken?: string;
 };
 
-export const useApiCall = () => {
-  const { token } = React.useContext(AuthContext);
+export const useApi = () => {
+  const { token } = useContext(AuthContext);
   const callApi = ({ url, data, method, externalResource, passedToken }: ApiCallTypes) => {
     if (!token && !passedToken) {
       // TODO: console.log(`Calling Api ${url}`);
     }
     const axiosOptions = {
+
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',

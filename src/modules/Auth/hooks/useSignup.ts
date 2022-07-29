@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { useApiCall } from 'utils/useApiCall';
+import { useApi } from 'utils/useApi';
 import { SignupInputs } from 'types';
 import apiService from 'services/apiService';
 

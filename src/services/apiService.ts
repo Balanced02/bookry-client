@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { useApiCall } from 'utils/useApiCall';
+import { useApi } from 'utils/useApi';
 
-const { callApi } = useApiCall();
+// const { callApi } = useApi();
 
 class ApiService {
   signup(dataObj) {
-    return callApi('signup');
+    // return callApi('signup');
   }
 }
 
