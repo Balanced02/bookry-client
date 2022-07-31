@@ -9,6 +9,7 @@ import Checkbox from 'components/Checkbox';
 import { SignupInputs, SignupInputError } from 'types';
 import './styles.scss';
 import useSignup from '../hooks/useSignup';
+import CardDeck from '../components/CardDeck';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -93,7 +94,7 @@ const Signup = () => {
         </div>
       </main>
       <main className="">
-        <div className="signup-card1">
+        <CardDeck>
           <div className="signup-form">
             <Button
               text="Google Play"
@@ -162,7 +163,7 @@ const Signup = () => {
               Already have an Account? <span onClick={() => navigate('/')}>Sign in</span>
             </p>
           </div>
-        </div>
+        </CardDeck>
       </main>
     </div>
   );
