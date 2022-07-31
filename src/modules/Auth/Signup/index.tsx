@@ -18,13 +18,13 @@ const Signup = () => {
     fullName: '',
     email: '',
     password: '',
-    referal: '',
+    // referal: '',
   });
   const [formErrors, setFormErrors] = useState<SignupInputError>({
     fullNameError: '',
     emailError: '',
     passwordError: '',
-    referalError: '',
+    // referalError: '',
   });
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -64,7 +64,7 @@ const Signup = () => {
         fullName: formValues.fullName,
         email: formValues.email,
         password: formValues.password,
-        referal: formValues.referal,
+        // referal: formValues.referal,
       };
       // TODO: Call endpoint
       signupFunc(formData);
@@ -93,50 +93,51 @@ const Signup = () => {
         </div>
       </main>
       <main className="">
-        <div className="signup-form">
-          <Button
-            text="Google Play"
-            type="light"
-            icon={<Google />}
-            onPress={() => console.log('Okey')}
-            className="google-button"
-          />
-          <div className="strike">
-            <span>Or</span>
-          </div>
-          <div className="input-form">
-            <div className="input-layout">
-              <Input
-                value={formValues.email}
-                label="Email"
-                type="text"
-                name="email"
-                handleChange={handleInputChange}
-                error={formErrors.emailError}
-              />
+        <div className="signup-card1">
+          <div className="signup-form">
+            <Button
+              text="Google Play"
+              type="light"
+              icon={<Google />}
+              onPress={() => console.log('Okey')}
+              className="google-button"
+            />
+            <div className="strike">
+              <span>Or</span>
             </div>
-            <div className="input-layout">
-              <Input
-                value={formValues.fullName}
-                label="Full Name"
-                type="text"
-                name="fullName"
-                handleChange={handleInputChange}
-                error={formErrors.fullNameError}
-              />
-            </div>
-            <div className="input-layout">
-              <Input
-                value={formValues.password}
-                label="Password"
-                type="password"
-                name="password"
-                icon={<EyeOpen />}
-                handleChange={handleInputChange}
-                error={formErrors.passwordError}
-              />
-            </div>
-            <div className="input-layout">
+            <div className="input-form">
+              <div className="input-layout">
+                <Input
+                  value={formValues.email}
+                  label="Email"
+                  type="text"
+                  name="email"
+                  handleChange={handleInputChange}
+                  error={formErrors.emailError}
+                />
+              </div>
+              <div className="input-layout">
+                <Input
+                  value={formValues.fullName}
+                  label="Full Name"
+                  type="text"
+                  name="fullName"
+                  handleChange={handleInputChange}
+                  error={formErrors.fullNameError}
+                />
+              </div>
+              <div className="input-layout">
+                <Input
+                  value={formValues.password}
+                  label="Password"
+                  type="password"
+                  name="password"
+                  icon={<EyeOpen />}
+                  handleChange={handleInputChange}
+                  error={formErrors.passwordError}
+                />
+              </div>
+              {/* <div className="input-layout">
               <Input
                 value={formValues.referal}
                 label="Referral Code (If any)"
@@ -145,21 +146,22 @@ const Signup = () => {
                 handleChange={handleInputChange}
                 error={formErrors.referalError}
               />
+            </div> */}
+              <div className="check-row">
+                <Checkbox
+                  label="I agree to the"
+                  className={isChecked ? '' : 'check-error'}
+                  isChecked={isChecked}
+                  handleChange={handleCheckChange}
+                />
+                <span>Terms of Services</span>
+              </div>
             </div>
-            <div className="check-row">
-              <Checkbox
-                label="I agree to the"
-                className={isChecked ? '' : 'check-error'}
-                isChecked={isChecked}
-                handleChange={handleCheckChange}
-              />
-              <span>Terms of Services</span>
-            </div>
+            <Button text="SIGN UP" className="signup-button" type="light" onPress={handleSignup} />
+            <p className="sign-in">
+              Already have an Account? <span onClick={() => navigate('/')}>Sign in</span>
+            </p>
           </div>
-          <Button text="SIGN UP" className="signup-button" type="light" onPress={handleSignup} />
-          <p className="sign-in">
-            Already have an Account? <span onClick={() => navigate('/')}>Sign in</span>
-          </p>
         </div>
       </main>
     </div>

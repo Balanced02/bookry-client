@@ -1,24 +1,25 @@
 import { useContext } from 'react';
-import axios from 'axios';
+import axios, { AxiosRequestHeaders, Method } from 'axios';
+import { ApiCallTypes } from 'types';
 import AuthContext from '../modules/Auth/context/AuthContext';
 
-export const SERVER_DOMAIN = ''; //TODO; domain URL
-export type ApiCallTypes = {
+export const SERVER_DOMAIN = 'https://bookry-server.herokuapp.com/api/v1'; //TODO; domain URL
+
+interface HeaderOptios {
+  headers: AxiosRequestHeaders;
   url: string;
-  data: string;
-  method: string;
-  externalResource?: string;
-  passedToken?: string;
-};
+  method: Method;
+  data?: any;
+}
 
 export const useApi = () => {
   const { token } = useContext(AuthContext);
   const callApi = ({ url, data, method, externalResource, passedToken }: ApiCallTypes) => {
     if (!token && !passedToken) {
       // TODO: console.log(`Calling Api ${url}`);
+      console.log(`Calling Api ${url}`);
     }
-    const axiosOptions = {
-
+    const axiosOptions: HeaderOptios = {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -29,6 +30,7 @@ export const useApi = () => {
     if (token || passedToken) {
       axiosOptions.headers.Authorization = `${`Bearer ${passedToken ? passedToken : token}`}`;
       // TODO:  console.log(`Calling Secured Api ${url}`);
+      console.log(`Calling Secured Api ${url}`);
     }
     if (data) {
       axiosOptions.data = data;
