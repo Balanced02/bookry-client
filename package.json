@@ -27,8 +27,8 @@
     "lint:fix": "prettier --ignore-path .eslintignore --write \"**/*.{js,jsx,ts,tsx,json,css,sass,scss,less,html,md}\" && eslint src --fix",
     "serve:dev": "webpack-dev-server --mode development --open --env env=development",
     "serve:dev:dashboard": "webpack-dashboard webpack-dev-server -- --mode development --env addon=dashboard",
-    "start": "yarn serve:dev",
-    "serve": "yarn build && serve -s -C build",
+    "dev": "yarn serve:dev",
+    "start": "serve -s -C build",
     "test": "jest --runInBand --detectOpenHandles --passWithNoTests",
     "test:watch": "jest -u --runInBand --verbose --watch --detectOpenHandles --passWithNoTests",
     "test:coverage": "jest -u --coverage --verbose --runInBand --detectOpenHandles --passWithNoTests"
