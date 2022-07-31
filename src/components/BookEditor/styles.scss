@@ -1,0 +1,23 @@
+@import 'assets/styles/variables';
+
+.book-editor {
+  .editor-container {
+    min-height: 80vh;
+    padding: 40px;
+    line-height: 2.5rem;
+    .inline-toolbar {
+      background-color: $dark-background;
+    }
+  }
+  .title-container {
+    text-align: center;
+    input.title {
+      background-color: transparent;
+      outline: none;
+      border: none;
+      font-size: 2.2rem;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+}

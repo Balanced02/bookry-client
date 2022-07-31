@@ -17,6 +17,12 @@ const config = {
   },
   module: {
     rules: [
+      // Temporary fix for fbjs webpack import setImmediate issue
+      {
+        test: /\.js$/,
+        include: /node_modules/,
+        use: path.resolve(__dirname, 'webpack.fbjs.loader.js'),
+      },
       {
         test: /\.(js|jsx|ts|tsx)$/,
         exclude: /(node_modules|bower_components)/,
