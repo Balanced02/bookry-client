@@ -20,5 +20,5 @@
     "resolveJsonModule": true
   },
   "include": ["**/*.ts", "**/*.tsx", "src/assets/svg/bookrySvg.jsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "src/components/BookEditor/colorBlockPlugin.js"]
 }
