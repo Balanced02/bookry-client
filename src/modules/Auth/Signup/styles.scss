@@ -47,24 +47,24 @@
       }
     }
     .signup-card1 {
-      transform: rotate(-2deg) translate(5px, 5px);
-      // transform: translate(50px, 100px);
-      background-color: $gray;
+      transform: rotate3d(1, 1, 1, -3deg);
+      background-color: $light-gray;
       max-width: 55rem;
       margin: auto;
       border-radius: 1rem;
-      box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.26);
+      border-bottom-right-radius: 200px;
+      box-shadow: 0rem 1rem 2rem rgba(242, 201, 76, 0.08), 0rem 1rem 2rem rgba(8, 35, 48, 0.14);
       // -webkit-box-shadow: 1px 0px 9px 2px rgba(0, 0, 0, 0.26);
       // -moz-box-shadow: 1px 0px 9px 2px rgba(0, 0, 0, 0.26);
       .signup-form {
         // transform: rotate(5deg) translate(10px, 20px);
-        transform: rotate(2deg) translate(-5px, - 5px);
+        transform: rotate3d(1, 1, 1, 3deg) translate(1rem, 1rem);
         background-color: $white;
         max-width: 55rem;
-        padding: 4rem 9rem;
+        padding: 10rem 9rem;
         margin: auto;
         border-radius: 1rem;
-        box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.26);
+        box-shadow: 0rem 1rem 2rem rgba(242, 201, 76, 0.08), 0rem 1rem 2rem rgba(8, 35, 48, 0.14);
         // -webkit-box-shadow: 1px 0px 9px 2px rgba(0, 0, 0, 0.26);
         // -moz-box-shadow: 1px 0px 9px 2px rgba(0, 0, 0, 0.26);
         .strike {
