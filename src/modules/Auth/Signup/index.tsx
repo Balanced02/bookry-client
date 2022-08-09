@@ -6,9 +6,10 @@ import { ReactComponent as Google } from 'assets/svg/Google.svg';
 import Button from 'components/Button';
 import Input from 'components/Input';
 import Checkbox from 'components/Checkbox';
-import { SignupInputs, SignupInputError } from 'types';
+import { SignupInputs, SignupInputError } from 'modules/Auth/types';
 import './styles.scss';
 import useSignup from '../hooks/useSignup';
+import NoteCard from '../components/NoteCard';
 import CardDeck from '../components/CardDeck';
 
 const Signup = () => {
@@ -74,24 +75,12 @@ const Signup = () => {
   return (
     <div className="signup-constainer">
       <main className="">
-        <a className="navbar-brand" onClick={() => navigate('/')}>
-          Bookry
-        </a>
-        <div className="welcome-note">
-          <div className="centerDiv">
-            <div className="svgIcon">
-              <Register />
-            </div>
-            <div className="head-text">
-              <h4 className="welcome">Welcome to</h4>
-              <h4 className="bookry">Bookry</h4>
-            </div>
-            <p className="text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi varius eleifend enim non luctus. Vestibulum
-              magna dui, porttitor vel diam nec, pellentesque bibendum odio.{' '}
-            </p>
-          </div>
-        </div>
+        <NoteCard
+          icon={<Register />}
+          description={
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi varius eleifend enim non luctus. Vestibulum magna dui, porttitor vel diam nec, pellentesque bibendum odio.'
+          }
+        />
       </main>
       <main className="">
         <CardDeck>

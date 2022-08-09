@@ -1,6 +1,6 @@
 import { Reducer, useEffect, useReducer } from 'react';
-import { AuthContextState, AuthActionType } from 'types';
-import { FETCH_ACCOUNT, LOG_OUT } from './types';
+import { AuthContextState, AuthActionType } from 'modules/Auth/types';
+import { SET_USER, LOG_OUT } from './types';
 
 const initialState: AuthContextState = {
   fullName: '',
@@ -12,7 +12,7 @@ const initialState: AuthContextState = {
 export function authReducer(state: AuthContextState, action: AuthActionType) {
   const { type, payload } = action;
   switch (type) {
-    case FETCH_ACCOUNT:
+    case SET_USER:
       return {
         ...state,
         fullName: payload.fullName,
@@ -46,7 +46,7 @@ const useAuthController = () => {
   useEffect(() => {
     const store = localStorage.getItem('@auth');
     if (store) {
-      dispatch({ type: FETCH_ACCOUNT, payload: JSON.parse(store) });
+      dispatch({ type: SET_USER, payload: JSON.parse(store) });
     }
   }, []);
 

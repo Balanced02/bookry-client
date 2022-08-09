@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { AuthContext } from 'types';
+import { AuthContext } from 'modules/Auth/types';
 
 const AuthContext = createContext({} as AuthContext);
 

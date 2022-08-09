@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { useApi } from 'utils/useApi';
 import { useAlert } from '../../../hooks';
-import { SignupInputs } from 'types';
+import { SignupInputs } from 'modules/Auth/types';
 
 export const useSignup = () => {
   const { callApi } = useApi();
