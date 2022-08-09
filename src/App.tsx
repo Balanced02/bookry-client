@@ -6,17 +6,20 @@ import { queryClient } from 'services/queryClient';
 import AuthContext from 'modules/Auth/context/AuthContext';
 import useAuthController from 'modules/Auth/context/useAuthController';
 import 'assets/styles/bookry.scss';
+import { AlertProvider } from 'context/AlertContext';
 
 const App = () => {
   const auth = useAuthController();
   return (
     <QueryClientProvider client={queryClient}>
       <AuthContext.Provider value={{ ...auth.state, dispatch: auth.dispatch }}>
-        <Suspense>
-          <BrowserRouter>
-            <AppRoutes />
-          </BrowserRouter>
-        </Suspense>
+        <AlertProvider>
+          <Suspense>
+            <BrowserRouter>
+              <AppRoutes />
+            </BrowserRouter>
+          </Suspense>
+        </AlertProvider>
       </AuthContext.Provider>
     </QueryClientProvider>
   );
