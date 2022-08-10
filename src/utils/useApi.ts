@@ -1,10 +1,16 @@
 import { useContext } from 'react';
 import axios, { AxiosRequestHeaders, Method } from 'axios';
-import { ApiCallTypes } from 'types';
 import AuthContext from '../modules/Auth/context/AuthContext';
 
 export const SERVER_DOMAIN = 'https://bookry-server.herokuapp.com/api/v1'; //TODO; domain URL
 
+export type ApiCallTypes = {
+  url: string;
+  method?: Method;
+  data?: any;
+  externalResource?: string;
+  passedToken?: string;
+};
 interface HeaderOptios {
   headers: AxiosRequestHeaders;
   url: string;

@@ -5,29 +5,24 @@ import { ReactComponent as EyeOpen } from 'assets/svg/EyeOpen.svg';
 import { ReactComponent as Google } from 'assets/svg/Google.svg';
 import Button from 'components/Button';
 import Input from 'components/Input';
-import Checkbox from 'components/Checkbox';
-import { SignupInputs, SignupInputError } from 'modules/Auth/types';
-import './styles.scss';
-import useSignup from '../hooks/useSignup';
+import { SigninInputs, SigninInputError } from 'modules/Auth/types';
+import { useSignIn } from '../hooks';
 import NoteCard from '../components/NoteCard';
 import CardDeck from '../components/CardDeck';
+import './styles.scss';
 
-const SignUp = () => {
+const SignIn = () => {
   const navigate = useNavigate();
-  const { signupFunc } = useSignup();
+  const { signinFunc } = useSignIn();
   const [isHidden, setIsHidden] = useState<boolean>(true);
-  const [isChecked, setIsChecked] = useState<boolean>(false);
-  const [formValues, setFormValues] = useState<SignupInputs>({
-    fullName: '',
+  const [formValues, setFormValues] = useState<SigninInputs>({
     email: '',
     password: '',
     // referal: '',
   });
-  const [formErrors, setFormErrors] = useState<SignupInputError>({
-    fullNameError: '',
+  const [formErrors, setFormErrors] = useState<SigninInputError>({
     emailError: '',
     passwordError: '',
-    // referalError: '',
   });
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -42,13 +37,8 @@ const SignUp = () => {
     }));
   };
 
-  const handleCheckChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { checked } = event.target;
-    setIsChecked(checked);
-  };
-
   const handleSignup = () => {
-    const newError: SignupInputError = {};
+    const newError: SigninInputError = {};
     let key: keyof typeof formValues;
     let formErrorName: keyof typeof newError;
     for (key in formValues) {
@@ -58,19 +48,13 @@ const SignUp = () => {
       }
     }
     setFormErrors(newError);
-    if (isChecked === false) {
-      // TODO: Call error toast function
-      return;
-    }
     if (!Object.keys(newError).length) {
       const formData = {
-        fullName: formValues.fullName,
         email: formValues.email,
         password: formValues.password,
-        // referal: formValues.referal,
       };
       // TODO: Call endpoint
-      signupFunc(formData);
+      signinFunc(formData);
     }
   };
 
@@ -78,7 +62,7 @@ const SignUp = () => {
     setIsHidden(!isHidden);
   };
   return (
-    <div className="signup-constainer">
+    <div className="login-constainer">
       <main className="">
         <NoteCard
           icon={<Register />}
@@ -89,7 +73,7 @@ const SignUp = () => {
       </main>
       <main className="">
         <CardDeck>
-          <div className="signup-form">
+          <div className="login-form">
             <Button
               text="Google Play"
               type="light"
@@ -113,19 +97,9 @@ const SignUp = () => {
               </div>
               <div className="input-layout">
                 <Input
-                  value={formValues.fullName}
-                  label="Full Name"
-                  type="text"
-                  name="fullName"
-                  handleChange={handleInputChange}
-                  error={formErrors.fullNameError}
-                />
-              </div>
-              <div className="input-layout">
-                <Input
                   value={formValues.password}
                   label="Password"
-                  type="password"
+                  type={isHidden ? 'password' : 'text'}
                   name="password"
                   icon={<EyeOpen />}
                   handleChange={handleInputChange}
@@ -133,30 +107,23 @@ const SignUp = () => {
                   onIcon={() => handlePasswordVisibility()}
                 />
               </div>
-              {/* <div className="input-layout">
-              <Input
-                value={formValues.referal}
-                label="Referral Code (If any)"
-                type="text"
-                name="referal"
-                handleChange={handleInputChange}
-                error={formErrors.referalError}
-              />
-            </div> */}
-              <div className="check-row">
-                <Checkbox
-                  label="I agree to the"
-                  className={isChecked ? '' : 'check-error'}
-                  isChecked={isChecked}
-                  handleChange={handleCheckChange}
-                />
-                <span>Terms of Services</span>
-              </div>
             </div>
-            <Button text="SIGN UP" className="signup-button" type="light" onPress={handleSignup} />
-            <p className="sign-in">
-              Already have an Account? <span onClick={() => navigate('/signin')}>Sign in</span>
+            <Button text="SIGN IN" className="signup-button" type="light" onPress={handleSignup} />
+            <p className="forgot-password">
+              <span onClick={() => navigate('/signin')}>Forgot Password?</span>
             </p>
+            <p className="sign-in">
+              {`Don't`} have an Account? <span onClick={() => navigate('/signup')}> Sign Up</span>
+            </p>
+            <div className="signin-footer">
+              <p className="chat">
+                Trouble signing in? <span onClick={() => navigate('/signin')}>Chat with us</span>
+              </p>
+              <p className="privacy">
+                <span onClick={() => navigate('/signin')}>Privacy</span> |{' '}
+                <span onClick={() => navigate('/signin')}>Terms</span>
+              </p>
+            </div>
           </div>
         </CardDeck>
       </main>
@@ -164,4 +131,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;

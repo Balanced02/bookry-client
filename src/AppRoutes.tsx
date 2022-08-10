@@ -5,6 +5,7 @@ import { AlertProvider } from 'context/AlertContext';
 import BookLayout from 'layout/BookLayout';
 import Landing from 'pages/Landing';
 import Signup from 'modules/Auth/Signup';
+import SignIn from 'modules/Auth/SignIn';
 
 const AppRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const AppRoutes = () => {
         <Route path="/" element={<Landing />} />
         <Route path="/book/:id" element={<BookLayout />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/signin" element={<SignIn />} />
       </Routes>
     </AlertProvider>
   );
