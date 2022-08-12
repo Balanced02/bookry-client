@@ -1,5 +1,6 @@
 import { BookT } from 'types';
 import Book from 'assets/images/book.jpeg';
+import { ReactComponent as Rating } from 'assets/svg/Rating.svg';
 
 export const mockBooks: Array<BookT> = [
   { id: 1, title: 'William Shakesphere', rating: '*****', img: Book },
