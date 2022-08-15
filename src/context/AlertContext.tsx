@@ -16,6 +16,7 @@ const { Context, Provider } = (function () {
       key: generateId(),
     };
   }
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const Context = createContext<AlertContextI>();
   const Provider = ({ children }: { children: ReactNode }) => {

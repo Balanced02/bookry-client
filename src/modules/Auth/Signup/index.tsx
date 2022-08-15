@@ -6,23 +6,27 @@ import { ReactComponent as Google } from 'assets/svg/Google.svg';
 import Button from 'components/Button';
 import Input from 'components/Input';
 import Checkbox from 'components/Checkbox';
-import { SignupInputs, SignupInputError } from 'types';
+import { SignupInputs, SignupInputError } from 'modules/Auth/types';
 import './styles.scss';
+import useSignup from '../hooks/useSignup';
+import NoteCard from '../components/NoteCard';
+import CardDeck from '../components/CardDeck';
 
 const Signup = () => {
   const navigate = useNavigate();
+  const { signupFunc } = useSignup();
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [formValues, setFormValues] = useState<SignupInputs>({
     fullName: '',
     email: '',
     password: '',
-    referal: '',
+    // referal: '',
   });
   const [formErrors, setFormErrors] = useState<SignupInputError>({
     fullNameError: '',
     emailError: '',
     passwordError: '',
-    referalError: '',
+    // referalError: '',
   });
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -62,78 +66,68 @@ const Signup = () => {
         fullName: formValues.fullName,
         email: formValues.email,
         password: formValues.password,
-        referal: formValues.referal,
+        // referal: formValues.referal,
       };
       // TODO: Call endpoint
+      signupFunc(formData);
     }
   };
   return (
     <div className="signup-constainer">
       <main className="">
-        <a className="navbar-brand" onClick={() => navigate('/')}>
-          Bookry
-        </a>
-        <div className="welcome-note">
-          <div className="centerDiv">
-            <div className="svgIcon">
-              <Register />
-            </div>
-            <div className="head-text">
-              <h4 className="welcome">Welcome to</h4>
-              <h4 className="bookry">Bookry</h4>
-            </div>
-            <p className="text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi varius eleifend enim non luctus. Vestibulum
-              magna dui, porttitor vel diam nec, pellentesque bibendum odio.{' '}
-            </p>
-          </div>
-        </div>
+        <NoteCard
+          icon={<Register />}
+          description={
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi varius eleifend enim non luctus. Vestibulum magna dui, porttitor vel diam nec, pellentesque bibendum odio.'
+          }
+        />
       </main>
       <main className="">
-        <div className="signup-form">
-          <Button
-            text="Google Play"
-            type="light"
-            icon={<Google />}
-            onPress={() => console.log('Okey')}
-            className="google-button"
-          />
-          <div className="strike">
-            <span>Or</span>
-          </div>
-          <div className="input-form">
-            <div className="input-layout">
-              <Input
-                value={formValues.email}
-                label="Email"
-                type="text"
-                name="email"
-                handleChange={handleInputChange}
-                error={formErrors.emailError}
-              />
+        <CardDeck>
+          <div className="signup-form">
+            <Button
+              text="Google Play"
+              type="light"
+              icon={<Google />}
+              onPress={() => console.log('Okey')}
+              className="google-button"
+            />
+            <div className="strike">
+              <span>Or</span>
             </div>
-            <div className="input-layout">
-              <Input
-                value={formValues.fullName}
-                label="Full Name"
-                type="text"
-                name="fullName"
-                handleChange={handleInputChange}
-                error={formErrors.fullNameError}
-              />
-            </div>
-            <div className="input-layout">
-              <Input
-                value={formValues.password}
-                label="Password"
-                type="password"
-                name="password"
-                icon={<EyeOpen />}
-                handleChange={handleInputChange}
-                error={formErrors.passwordError}
-              />
-            </div>
-            <div className="input-layout">
+            <div className="input-form">
+              <div className="input-layout">
+                <Input
+                  value={formValues.email}
+                  label="Email"
+                  type="text"
+                  name="email"
+                  handleChange={handleInputChange}
+                  error={formErrors.emailError}
+                />
+              </div>
+              <div className="input-layout">
+                <Input
+                  value={formValues.fullName}
+                  label="Full Name"
+                  type="text"
+                  name="fullName"
+                  handleChange={handleInputChange}
+                  error={formErrors.fullNameError}
+                />
+              </div>
+              <div className="input-layout">
+                <Input
+                  value={formValues.password}
+                  label="Password"
+                  type="password"
+                  name="password"
+                  icon={<EyeOpen />}
+                  handleChange={handleInputChange}
+                  error={formErrors.passwordError}
+                />
+              </div>
+              {/* <div className="input-layout">
               <Input
                 value={formValues.referal}
                 label="Referral Code (If any)"
@@ -142,22 +136,23 @@ const Signup = () => {
                 handleChange={handleInputChange}
                 error={formErrors.referalError}
               />
+            </div> */}
+              <div className="check-row">
+                <Checkbox
+                  label="I agree to the"
+                  className={isChecked ? '' : 'check-error'}
+                  isChecked={isChecked}
+                  handleChange={handleCheckChange}
+                />
+                <span>Terms of Services</span>
+              </div>
             </div>
-            <div className="check-row">
-              <Checkbox
-                label="I agree to the"
-                className={isChecked ? '' : 'check-error'}
-                isChecked={isChecked}
-                handleChange={handleCheckChange}
-              />
-              <span>Terms of Services</span>
-            </div>
+            <Button text="SIGN UP" className="signup-button" type="light" onPress={handleSignup} />
+            <p className="sign-in">
+              Already have an Account? <span onClick={() => navigate('/')}>Sign in</span>
+            </p>
           </div>
-          <Button text="SIGN UP" className="signup-button" type="light" onPress={handleSignup} />
-          <p className="sign-in">
-            Already have an Account? <span onClick={() => navigate('/')}>Sign in</span>
-          </p>
-        </div>
+        </CardDeck>
       </main>
     </div>
   );
