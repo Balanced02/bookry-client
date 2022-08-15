@@ -6,54 +6,14 @@
   padding: 5rem;
   main {
     flex: 1%;
-    .navbar-brand {
-      font-size: 4rem;
-      font-weight: 800;
-      -webkit-text-stroke-width: 1px;
-      -webkit-text-stroke-color: black;
-      color: white;
-      cursor: pointer;
-    }
-    .welcome-note {
-      display: flex;
-      height: 100%;
-      align-items: center;
-      .centerDiv {
-        justify-content: center;
-        .svgIcon {
-          display: flex;
-          justify-content: center;
-        }
-        .head-text {
-          display: flex;
-          margin-top: -5rem;
-          justify-content: center;
-          .welcome {
-            font-size: 3rem;
-            padding-right: 1rem;
-          }
-          .bookry {
-            font-size: 3rem;
-            -webkit-text-stroke-width: 1px;
-            -webkit-text-stroke-color: black;
-            color: white;
-          }
-        }
-        .text {
-          font-size: 1.5rem;
-          padding: 3rem 10rem;
-          text-align: center;
-        }
-      }
-    }
     .signup-form {
-      padding: 4rem;
+      padding: 8rem 8rem;
       .strike {
         display: block;
         text-align: center;
         overflow: hidden;
         white-space: nowrap;
-        margin: 5rem 8rem;
+        margin: 3rem 8rem 0rem 8rem;
       }
       .google-button {
         p {
@@ -89,6 +49,20 @@
       }
       .input-form {
         padding: 3rem 0;
+        .input-layout {
+          padding: 1.7rem 0;
+        }
+        .check-row {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          span {
+            padding-left: 0.5rem;
+            color: $primary-color;
+            font-size: 1.2rem;
+            cursor: pointer;
+          }
+        }
       }
       .sign-in {
         text-align: center;
