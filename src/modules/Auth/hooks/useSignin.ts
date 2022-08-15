@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
 import { useApi } from 'utils/useApi';
 import { useAlert } from '../../../hooks';
 import { SigninInputs } from 'modules/Auth/types';
@@ -12,12 +13,12 @@ export const useSignIn = () => {
       onSuccess: async (res) => {
         // TODO: dispatch all neccesary data
         console.log('loginRes', res);
-        showSuccess({ title: 'Login Successful!', description: 'You are too good' });
+        showSuccess({ title: 'Login Successful!', description: 'Verify you account' });
       },
-      onError: async (error) => {
+      onError: async (error: AxiosError) => {
         // TODO: dispatch all neccesary data
-        console.log('loginError', error);
-        showError({ title: 'Login Error', description: "You're a dummy" });
+        console.log('loginError', error.response);
+        showError({ title: 'Login Error', description: 'Invalid credentials you dummy' });
       },
     },
   );
