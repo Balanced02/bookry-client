@@ -18,7 +18,7 @@ export const useSignIn = () => {
       onError: async (error: AxiosError) => {
         // TODO: dispatch all neccesary data
         console.log('loginError', error.response);
-        showError({ title: 'Login Error', description: 'Invalid credentials you dummy' });
+        showError({ title: 'Login Error', description: 'Invalid credentials' });
       },
     },
   );

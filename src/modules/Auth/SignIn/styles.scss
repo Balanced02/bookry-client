@@ -1,9 +1,11 @@
 @import 'assets/styles/variables';
 .login-constainer {
+  max-width: 140rem;
+  margin: auto;
   display: flex;
   background-color: $white;
   height: 100vh;
-  padding: 5rem;
+  padding: 5rem 6rem;
   main {
     flex: 1%;
     .login-form {

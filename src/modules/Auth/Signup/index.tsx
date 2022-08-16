@@ -1,7 +1,8 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Register } from 'assets/svg/Auth.svg';
 import { ReactComponent as EyeOpen } from 'assets/svg/EyeOpen.svg';
+import { ReactComponent as EyeClose } from 'assets/svg/EyeClose.svg';
 import { ReactComponent as Google } from 'assets/svg/Google.svg';
 import Button from 'components/Button';
 import Input from 'components/Input';
@@ -40,6 +41,12 @@ const SignUp = () => {
       ...prevState,
       [formErrorName]: '',
     }));
+  };
+
+  const keyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.code === 'Enter') {
+      setIsChecked(!isChecked);
+    }
   };
 
   const handleCheckChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -125,12 +132,12 @@ const SignUp = () => {
                 <Input
                   value={formValues.password}
                   label="Password"
-                  type="password"
+                  type={isHidden ? 'password' : 'text'}
                   name="password"
-                  icon={<EyeOpen />}
+                  icon={isHidden ? <EyeClose /> : <EyeOpen />}
                   handleChange={handleInputChange}
                   error={formErrors.passwordError}
-                  onIcon={() => handlePasswordVisibility()}
+                  onIcon={handlePasswordVisibility}
                 />
               </div>
               {/* <div className="input-layout">
@@ -149,11 +156,18 @@ const SignUp = () => {
                   className={isChecked ? '' : 'check-error'}
                   isChecked={isChecked}
                   handleChange={handleCheckChange}
+                  handleKeyDown={keyDownHandler}
                 />
                 <span>Terms of Services</span>
               </div>
             </div>
-            <Button text="SIGN UP" className="signup-button" type="light" onPress={handleSignup} />
+            <Button
+              text="SIGN UP"
+              className={isChecked ? 'signup-button' : 'checked-button'}
+              type="light"
+              onPress={handleSignup}
+              disabled={isChecked ? false : true}
+            />
             <p className="sign-in">
               Already have an Account? <span onClick={() => navigate('/signin')}>Sign in</span>
             </p>

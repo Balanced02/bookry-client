@@ -1,5 +1,7 @@
 @import 'assets/styles/variables';
 .signup-constainer {
+  max-width: 140rem;
+  margin: auto;
   display: flex;
   background-color: $white;
   height: 100vh;
@@ -22,6 +24,12 @@
       }
       .signup-button {
         background-color: $dark;
+        p {
+          color: $white;
+        }
+      }
+      .checked-button {
+        background-color: $gray;
         p {
           color: $white;
         }

@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Register } from 'assets/svg/Auth.svg';
+import { ReactComponent as EyeClose } from 'assets/svg/EyeClose.svg';
 import { ReactComponent as EyeOpen } from 'assets/svg/EyeOpen.svg';
 import { ReactComponent as Google } from 'assets/svg/Google.svg';
 import Button from 'components/Button';
@@ -14,7 +15,7 @@ import './styles.scss';
 const SignIn = () => {
   const navigate = useNavigate();
   const { signinFunc } = useSignIn();
-  const [isHidden, setIsHidden] = useState<boolean>(true);
+  const [isHidden, setIsHidden] = useState<string>('password');
   const [formValues, setFormValues] = useState<SigninInputs>({
     email: '',
     password: '',
@@ -59,8 +60,13 @@ const SignIn = () => {
   };
 
   const handlePasswordVisibility = () => {
-    setIsHidden(!isHidden);
+    if (isHidden === 'password') {
+      setIsHidden('text');
+      return;
+    }
+    setIsHidden('password');
   };
+
   return (
     <div className="login-constainer">
       <main className="">
@@ -99,12 +105,12 @@ const SignIn = () => {
                 <Input
                   value={formValues.password}
                   label="Password"
-                  type={isHidden ? 'password' : 'text'}
+                  type={isHidden}
                   name="password"
-                  icon={<EyeOpen />}
+                  icon={isHidden === 'password' ? <EyeClose /> : <EyeOpen />}
                   handleChange={handleInputChange}
                   error={formErrors.passwordError}
-                  onIcon={() => handlePasswordVisibility()}
+                  onIcon={handlePasswordVisibility}
                 />
               </div>
             </div>
