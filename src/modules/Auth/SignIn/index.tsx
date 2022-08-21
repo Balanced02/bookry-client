@@ -116,7 +116,7 @@ const SignIn = () => {
             </div>
             <Button text="SIGN IN" className="signup-button" type="light" onPress={handleSignup} />
             <p className="forgot-password">
-              <span onClick={() => navigate('/signin')}>Forgot Password?</span>
+              <span onClick={() => navigate('/forgotpassword')}>Forgot Password?</span>
             </p>
             <p className="sign-in">
               {`Don't`} have an Account? <span onClick={() => navigate('/signup')}> Sign Up</span>
