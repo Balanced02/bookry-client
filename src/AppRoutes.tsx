@@ -7,6 +7,7 @@ import Landing from 'pages/Landing';
 import Signup from 'modules/Auth/Signup';
 import SignIn from 'modules/Auth/SignIn';
 import ForgotPassword from 'modules/Auth/ForgotPassword';
+import NewPassword from 'modules/Auth/NewPassword';
 
 const AppRoutes = () => {
   return (
@@ -18,6 +19,7 @@ const AppRoutes = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/newpassword" element={<NewPassword />} />
       </Routes>
     </AlertProvider>
   );
