@@ -16,7 +16,7 @@ import CardDeck from '../components/CardDeck';
 const SignUp = () => {
   const navigate = useNavigate();
   const { signupFunc } = useSignup();
-  const [isHidden, setIsHidden] = useState<boolean>(true);
+  const [isHidden, setIsHidden] = useState<boolean>(false);
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [formValues, setFormValues] = useState<SignupInputs>({
     fullName: '',
@@ -82,7 +82,7 @@ const SignUp = () => {
   };
 
   const handlePasswordVisibility = () => {
-    setIsHidden(!isHidden);
+    setIsHidden((preState) => !preState);
   };
   return (
     <div className="signup-constainer">
@@ -132,7 +132,7 @@ const SignUp = () => {
                 <Input
                   value={formValues.password}
                   label="Password"
-                  type={isHidden ? 'password' : 'text'}
+                  type={isHidden ? 'text' : 'password'}
                   name="password"
                   icon={isHidden ? <EyeClose /> : <EyeOpen />}
                   handleChange={handleInputChange}

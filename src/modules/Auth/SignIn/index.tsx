@@ -69,7 +69,7 @@ const SignIn = () => {
 
   return (
     <div className="login-constainer">
-      <main className="">
+      <main className="notecard">
         <NoteCard
           icon={<Register />}
           description={

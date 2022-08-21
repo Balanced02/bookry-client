@@ -3,11 +3,13 @@
   max-width: 140rem;
   margin: auto;
   display: flex;
-  background-color: $white;
+  // background-color: $white;
+  padding: 5rem 6rem;
   height: 100vh;
-  padding: 5rem;
+  // padding: 5rem;
   main {
     flex: 1%;
+    padding: 3rem;
     .signup-form {
       padding: 8rem 8rem;
       .strike {

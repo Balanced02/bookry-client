@@ -3,11 +3,15 @@
   max-width: 140rem;
   margin: auto;
   display: flex;
-  background-color: $white;
+  // background-color: $white;
   height: 100vh;
   padding: 5rem 6rem;
+  .notecard {
+    align-items: center;
+  }
   main {
     flex: 1%;
+    padding: 3rem;
     .login-form {
       padding: 8rem 8rem;
       .strike {
