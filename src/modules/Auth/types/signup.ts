@@ -8,6 +8,9 @@ export type SigninInputs = {
   email: string;
   password: string;
 };
+export type ForgotInput = {
+  email: string;
+};
 
 export type SignupInputError = {
   fullNameError?: string;
@@ -18,4 +21,8 @@ export type SignupInputError = {
 export type SigninInputError = {
   emailError?: string;
   passwordError?: string;
+};
+
+export type ForgotInputError = {
+  emailError?: string;
 };

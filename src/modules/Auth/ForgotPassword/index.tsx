@@ -4,17 +4,20 @@ import { ReactComponent as Register } from 'assets/svg/Auth.svg';
 import { ReactComponent as KeyLock } from 'assets/svg/KeyLock.svg';
 import Input from 'components/Input';
 import Button from 'components/Button';
+import { useForgotPass } from '../hooks';
+import { ForgotInput, ForgotInputError } from 'modules/Auth/types';
 import NoteCard from '../components/NoteCard';
 import CardDeck from '../components/CardDeck';
 import './styles.scss';
 
 const ForgetPassword = () => {
   const navigate = useNavigate();
-  const [formValues, setFormValues] = useState({
+  const { forgotPassFunc } = useForgotPass();
+  const [formValues, setFormValues] = useState<ForgotInput>({
     email: '',
   });
 
-  const [formErrors, setFormErrors] = useState({
+  const [formErrors, setFormErrors] = useState<ForgotInputError>({
     emailError: '',
   });
 
@@ -32,7 +35,23 @@ const ForgetPassword = () => {
   };
 
   const handleSignup = () => {
-    console.log('hi');
+    const newError: ForgotInputError = {};
+    let key: keyof typeof formValues;
+    let formErrorName: keyof typeof newError;
+    for (key in formValues) {
+      if (!formValues[key]) {
+        formErrorName = `${key}Error`;
+        newError[formErrorName] = 'Please provide a value';
+      }
+    }
+    setFormErrors(newError);
+    if (!Object.keys(newError).length) {
+      const formData = {
+        email: formValues.email,
+      };
+      // TODO: Call endpoint
+      forgotPassFunc(formData);
+    }
   };
   return (
     <div className="forgot-password-constainer">
