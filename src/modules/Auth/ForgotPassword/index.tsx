@@ -87,7 +87,8 @@ const ForgetPassword = () => {
             </div>
             <Button text="GET CODE" className="get-code" type="light" onPress={handleSignup} />
             <p className="sign-in">
-              Remeber password? <span onClick={() => navigate('/newpassword')}> Login</span>
+              Remeber password?{' '}
+              <span onClick={() => navigate('/confirmemail', { state: formValues.email })}> Login</span>
             </p>
           </div>
         </CardDeck>

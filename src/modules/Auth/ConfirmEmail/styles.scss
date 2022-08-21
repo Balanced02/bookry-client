@@ -1,0 +1,83 @@
+@import 'assets/styles/variables';
+.confirm-email-constainer {
+  display: flex;
+  max-width: 140rem;
+  margin: auto;
+  height: 100vh;
+  padding: 5rem 6rem;
+  .notecard {
+    align-items: center;
+  }
+  main {
+    flex: 1%;
+    padding: 3rem;
+    .email-form {
+      padding: 5rem 8rem;
+      .lock-card {
+        text-align: center;
+        .heading {
+          font-size: 2.5rem;
+          padding: 2rem 0;
+          font-weight: 500;
+          padding-top: 2rem;
+        }
+        .text {
+          font-size: 1.5rem;
+          line-height: 2.5rem;
+          span {
+            color: $dark;
+            text-decoration: none;
+            font-weight: 700;
+          }
+        }
+      }
+      .input-form {
+        padding: 3rem 0;
+        .input-layout {
+          padding: 1.7rem 0 1rem;
+          text-align: center;
+          .box-input {
+            width: 4rem;
+            height: 4rem;
+            margin: 0 0.8rem;
+            border: 2px solid $gray;
+            text-align: center;
+            &:focus {
+              border: 2px solid $primary-color;
+              outline: none;
+            }
+          }
+          .error {
+            border: 2px solid $error;
+            &:focus {
+              border: 2px solid $error;
+            }
+          }
+        }
+        .error-text {
+          font-size: 1rem;
+          margin: 0.5rem 3.5rem 2rem;
+          color: $error;
+        }
+      }
+      .confirm {
+        background-color: $dark;
+        margin-top: 2rem;
+        p {
+          color: $white;
+        }
+      }
+      .timer {
+        margin: 4rem 0 2rem;
+        text-align: center;
+      }
+      .resend-code {
+        text-align: center;
+        margin: 1rem 0 4rem;
+        color: $primary-color;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+}
