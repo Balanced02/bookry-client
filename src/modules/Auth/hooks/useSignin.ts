@@ -12,12 +12,10 @@ export const useSignIn = () => {
     {
       onSuccess: async (res) => {
         // TODO: dispatch all neccesary data
-        console.log('loginRes', res);
         showSuccess({ title: 'Login Successful!', description: 'Verify you account' });
       },
       onError: async (error: AxiosError) => {
         // TODO: dispatch all neccesary data
-        console.log('loginError', error.response);
         showError({ title: 'Login Error', description: 'Invalid credentials' });
       },
     },

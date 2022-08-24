@@ -11,8 +11,8 @@ export type SigninInputs = {
 export type ForgotInput = {
   email: string;
 };
-export type ConfirmInput = {
-  code: number;
+export type BoxInput = {
+  resetCode: number;
 };
 
 export type NewPasswordInput = {

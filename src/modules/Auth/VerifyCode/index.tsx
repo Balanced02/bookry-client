@@ -1,25 +1,24 @@
 import React, { ChangeEvent, useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { ReactComponent as Register } from 'assets/svg/Auth.svg';
 import { ReactComponent as Message } from 'assets/svg/Message.svg';
 import Button from 'components/Button';
-import { useForgotPass, useConfirmPass } from '../hooks';
+import { useForgotPass, useVerifyCode } from '../hooks';
 import NoteCard from '../components/NoteCard';
 import CardDeck from '../components/CardDeck';
 import './styles.scss';
 
-const ConfirmEmail = () => {
-  const navigate = useNavigate();
+const VerifyCode = () => {
   const { state } = useLocation();
   const { forgotPassFunc } = useForgotPass();
-  const { confirmFunc } = useConfirmPass();
+  const { verifyCode } = useVerifyCode();
   const [otp, setOtp] = useState(new Array(6).fill(''));
   const [error, setError] = useState<string>('');
   const [seconds, setSeconds] = useState<number>(60);
   const [minutes, setMinutes] = useState<number>(4);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>, index: number) => {
-    const { name, value, nextSibling } = event.target;
+    const { value, nextSibling } = event.target;
     setError('');
     if (isNaN(parseInt(value))) return false;
     setOtp([...otp.map((d, idx) => (idx === index ? value : d))]);
@@ -41,10 +40,10 @@ const ConfirmEmail = () => {
       setError('Please provide a valid code');
     }
     const formData = {
-      code: +otp.join(''),
+      resetCode: +otp.join(''),
     };
     // TODO: Call endpoint
-    confirmFunc(formData);
+    verifyCode(formData);
   };
 
   useEffect(() => {
@@ -118,4 +117,4 @@ const ConfirmEmail = () => {
   );
 };
 
-export default ConfirmEmail;
+export default VerifyCode;
