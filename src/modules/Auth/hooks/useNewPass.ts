@@ -26,8 +26,7 @@ export const useNewPass = () => {
   const { isLoading, error, data } = mutation;
   // TODO: Get this from context
   const newPassFunc = (data: NewPasswordInput) => {
-    // mutation.mutate(data);
-    console.log('ForgotInput', data);
+    mutation.mutate(data);
   };
 
   return { newPassFunc, data, error, isLoading };

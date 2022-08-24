@@ -2,20 +2,22 @@ import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { useApi } from 'utils/useApi';
 import { useAlert } from '../../../hooks';
-import { SigninInputs } from 'modules/Auth/types';
+import { BoxInput } from 'modules/Auth/types';
 
-export const useSignIn = () => {
+export const useVerifyCode = () => {
   const { callApi } = useApi();
   const { showSuccess, showError } = useAlert();
   const mutation = useMutation(
-    async (user: SigninInputs) => callApi({ url: '/auth/login', data: user, method: 'POST' }),
+    async (user: BoxInput) => callApi({ url: '/auth/verifyCode', data: user, method: 'POST' }),
     {
       onSuccess: async (res) => {
         // TODO: dispatch all neccesary data
-        showSuccess({ title: 'Login Successful!', description: 'Verify you account' });
+        console.log('loginRes', res);
+        // showSuccess({ title: 'Login Successful!', description: 'Verify you account' });
       },
       onError: async (error: AxiosError) => {
         // TODO: dispatch all neccesary data
+        console.log('loginError', error.response);
         showError({ title: 'Login Error', description: 'Invalid credentials' });
       },
     },
@@ -23,11 +25,11 @@ export const useSignIn = () => {
 
   const { isLoading, error, data } = mutation;
   // TODO: Get this from context
-  const signinFunc = (data: SigninInputs) => {
+  const verifyCode = (data: BoxInput) => {
     mutation.mutate(data);
   };
 
-  return { signinFunc, data, error, isLoading };
+  return { verifyCode, data, error, isLoading };
 };
 
-export default useSignIn;
+export default useVerifyCode;

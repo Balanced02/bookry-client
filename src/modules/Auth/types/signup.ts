@@ -11,6 +11,10 @@ export type SigninInputs = {
 export type ForgotInput = {
   email: string;
 };
+export type BoxInput = {
+  resetCode: number;
+};
+
 export type NewPasswordInput = {
   password: string;
   Cpassword: string;
