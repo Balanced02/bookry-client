@@ -1,16 +1,17 @@
 @import 'assets/styles/variables';
-.signup-constainer {
+.login-constainer {
   max-width: 140rem;
   margin: auto;
   display: flex;
-  // background-color: $white;
-  padding: 5rem 6rem;
   height: 100vh;
-  // padding: 5rem;
+  padding: 5rem 6rem;
+  .notecard {
+    align-items: center;
+  }
   main {
     flex: 1%;
     padding: 3rem;
-    .signup-form {
+    .login-form {
       padding: 8rem 8rem;
       .strike {
         display: block;
@@ -26,12 +27,6 @@
       }
       .signup-button {
         background-color: $dark;
-        p {
-          color: $white;
-        }
-      }
-      .checked-button {
-        background-color: $gray;
         p {
           color: $white;
         }
@@ -62,16 +57,14 @@
         .input-layout {
           padding: 1.7rem 0;
         }
-        .check-row {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          span {
-            padding-left: 0.5rem;
-            color: $primary-color;
-            font-size: 1.2rem;
-            cursor: pointer;
-          }
+      }
+      .forgot-password {
+        text-align: center;
+        margin: 4rem 0 3rem;
+        span {
+          color: $primary-color;
+          text-decoration: none;
+          cursor: pointer;
         }
       }
       .sign-in {
@@ -81,6 +74,30 @@
           color: $primary-color;
           text-decoration: underline;
           cursor: pointer;
+        }
+      }
+      .signin-footer{
+        display: flex;
+        justify-content: space-between;
+        padding-top: 3rem;
+        .chat {
+          font-size: small;
+          span {
+            color: $primary-color;
+            text-decoration: none;
+            cursor: pointer;
+          }
+        }
+        .privacy {
+          color: $gray;
+          font-size: small;
+          span {
+            text-decoration: none;
+            cursor: pointer;
+            &:hover {
+              color: $light-text;
+            }
+          }
         }
       }
     }

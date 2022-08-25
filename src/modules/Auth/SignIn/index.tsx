@@ -1,34 +1,29 @@
-import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Register } from 'assets/svg/Auth.svg';
-import { ReactComponent as EyeOpen } from 'assets/svg/EyeOpen.svg';
 import { ReactComponent as EyeClose } from 'assets/svg/EyeClose.svg';
+import { ReactComponent as EyeOpen } from 'assets/svg/EyeOpen.svg';
 import { ReactComponent as Google } from 'assets/svg/Google.svg';
 import Button from 'components/Button';
 import Input from 'components/Input';
-import Checkbox from 'components/Checkbox';
-import { SignupInputs, SignupInputError } from 'modules/Auth/types';
-import './styles.scss';
-import useSignup from '../hooks/useSignup';
+import { SigninInputs, SigninInputError } from 'modules/Auth/types';
+import { useSignIn } from '../hooks';
 import NoteCard from '../components/NoteCard';
 import CardDeck from '../components/CardDeck';
+import './styles.scss';
 
-const SignUp = () => {
+const SignIn = () => {
   const navigate = useNavigate();
-  const { signupFunc } = useSignup();
-  const [isHidden, setIsHidden] = useState<boolean>(false);
-  const [isChecked, setIsChecked] = useState<boolean>(false);
-  const [formValues, setFormValues] = useState<SignupInputs>({
-    fullName: '',
+  const { signinFunc } = useSignIn();
+  const [isHidden, setIsHidden] = useState<string>('password');
+  const [formValues, setFormValues] = useState<SigninInputs>({
     email: '',
     password: '',
     // referal: '',
   });
-  const [formErrors, setFormErrors] = useState<SignupInputError>({
-    fullNameError: '',
+  const [formErrors, setFormErrors] = useState<SigninInputError>({
     emailError: '',
     passwordError: '',
-    // referalError: '',
   });
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -43,19 +38,8 @@ const SignUp = () => {
     }));
   };
 
-  const keyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.code === 'Enter') {
-      setIsChecked(!isChecked);
-    }
-  };
-
-  const handleCheckChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { checked } = event.target;
-    setIsChecked(checked);
-  };
-
   const handleSignup = () => {
-    const newError: SignupInputError = {};
+    const newError: SigninInputError = {};
     let key: keyof typeof formValues;
     let formErrorName: keyof typeof newError;
     for (key in formValues) {
@@ -65,28 +49,27 @@ const SignUp = () => {
       }
     }
     setFormErrors(newError);
-    if (isChecked === false) {
-      // TODO: Call error toast function
-      return;
-    }
     if (!Object.keys(newError).length) {
       const formData = {
-        fullName: formValues.fullName,
         email: formValues.email,
         password: formValues.password,
-        // referal: formValues.referal,
       };
       // TODO: Call endpoint
-      signupFunc(formData);
+      signinFunc(formData);
     }
   };
 
   const handlePasswordVisibility = () => {
-    setIsHidden((preState) => !preState);
+    if (isHidden === 'password') {
+      setIsHidden('text');
+      return;
+    }
+    setIsHidden('password');
   };
+
   return (
-    <div className="signup-constainer">
-      <main className="">
+    <div className="login-constainer">
+      <main className="notecard">
         <NoteCard
           icon={<Register />}
           description={
@@ -96,7 +79,7 @@ const SignUp = () => {
       </main>
       <main className="">
         <CardDeck>
-          <div className="signup-form">
+          <div className="login-form">
             <Button
               text="Google Play"
               type="light"
@@ -120,57 +103,33 @@ const SignUp = () => {
               </div>
               <div className="input-layout">
                 <Input
-                  value={formValues.fullName}
-                  label="Full Name"
-                  type="text"
-                  name="fullName"
-                  handleChange={handleInputChange}
-                  error={formErrors.fullNameError}
-                />
-              </div>
-              <div className="input-layout">
-                <Input
                   value={formValues.password}
                   label="Password"
-                  type={isHidden ? 'text' : 'password'}
+                  type={isHidden}
                   name="password"
-                  icon={isHidden ? <EyeClose /> : <EyeOpen />}
+                  icon={isHidden === 'password' ? <EyeClose /> : <EyeOpen />}
                   handleChange={handleInputChange}
                   error={formErrors.passwordError}
                   onIcon={handlePasswordVisibility}
                 />
               </div>
-              {/* <div className="input-layout">
-              <Input
-                value={formValues.referal}
-                label="Referral Code (If any)"
-                type="text"
-                name="referal"
-                handleChange={handleInputChange}
-                error={formErrors.referalError}
-              />
-            </div> */}
-              <div className="check-row">
-                <Checkbox
-                  label="I agree to the"
-                  className={isChecked ? '' : 'check-error'}
-                  isChecked={isChecked}
-                  handleChange={handleCheckChange}
-                  handleKeyDown={keyDownHandler}
-                />
-                <span>Terms of Services</span>
-              </div>
             </div>
-            <Button
-              text="SIGN UP"
-              className={isChecked ? 'signup-button' : 'checked-button'}
-              type="light"
-              onPress={handleSignup}
-              disabled={isChecked ? false : true}
-            />
-            <p className="sign-in">
-              Already have an Account? <span onClick={() => navigate('/signin')}>Sign in</span>
+            <Button text="SIGN IN" className="signup-button" type="light" onPress={handleSignup} />
+            <p className="forgot-password">
+              <span onClick={() => navigate('/forgotpassword')}>Forgot Password?</span>
             </p>
+            <p className="sign-in">
+              {`Don't`} have an Account? <span onClick={() => navigate('/signup')}> Sign Up</span>
+            </p>
+            <div className="signin-footer">
+              <p className="chat">
+                Trouble signing in? <span onClick={() => navigate('/signin')}>Chat with us</span>
+              </p>
+              <p className="privacy">
+                <span onClick={() => navigate('/signin')}>Privacy</span> |{' '}
+                <span onClick={() => navigate('/signin')}>Terms</span>
+              </p>
+            </div>
           </div>
         </CardDeck>
       </main>
@@ -178,4 +137,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;

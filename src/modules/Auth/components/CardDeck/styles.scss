@@ -1,0 +1,35 @@
+@import 'assets/styles/variables';
+.deck-constainer {
+  .signup-card1 {
+    transform: rotate3d(1, 1, 1, -9deg);
+    background-color: $semi-gray;
+    max-width: 55rem;
+    margin: auto;
+    border-radius: 1rem;
+    border-bottom-right-radius: 200px;
+    box-shadow: 0rem 1rem 2rem rgba(242, 201, 76, 0.08), 0rem 1rem 2rem rgba(8, 35, 48, 0.14);
+    -webkit-box-shadow: 0rem 1rem 2rem rgba(242, 201, 76, 0.08), 0rem 1rem 2rem rgba(8, 35, 48, 0.14);
+    -moz-box-shadow: 0rem 1rem 2rem rgba(242, 201, 76, 0.08), 0rem 1rem 2rem rgba(8, 35, 48, 0.14);
+    .signup-card2 {
+      transform: rotate3d(1, 1, 1, 3deg) translate(0.7rem, 0.7rem);
+      background-color: $light-gray;
+      max-width: 55rem;
+      margin: auto;
+      border-radius: 1rem;
+      border-bottom-right-radius: 200px;
+      box-shadow: 0rem 1rem 2rem rgba(242, 201, 76, 0.08), 0rem 1rem 2rem rgba(8, 35, 48, 0.14);
+      -webkit-box-shadow: 0rem 1rem 2rem rgba(242, 201, 76, 0.08), 0rem 1rem 2rem rgba(8, 35, 48, 0.14);
+      -moz-box-shadow: 0rem 1rem 2rem rgba(242, 201, 76, 0.08), 0rem 1rem 2rem rgba(8, 35, 48, 0.14);
+      .signup-card3 {
+        transform: rotate3d(1, 1, 1, 4deg) translate(1rem, 1rem);
+        background-color: $white;
+        max-width: 55rem;
+        margin: auto;
+        border-radius: 1rem;
+        box-shadow: 0rem 1rem 2rem rgba(242, 201, 76, 0.08), 0rem 1rem 2rem rgba(8, 35, 48, 0.14);
+        -webkit-box-shadow: 0rem 1rem 2rem rgba(242, 201, 76, 0.08), 0rem 1rem 2rem rgba(8, 35, 48, 0.14);
+        -moz-box-shadow: 0rem 1rem 2rem rgba(242, 201, 76, 0.08), 0rem 1rem 2rem rgba(8, 35, 48, 0.14);
+      }
+    }
+  }
+}

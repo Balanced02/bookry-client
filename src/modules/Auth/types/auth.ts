@@ -9,7 +9,6 @@ export type AuthContextState = {
 
 export type AuthActionType = { type: string; payload: AuthContextState };
 
-export type AuthContext = {
-  state: AuthContextState;
+export interface AuthContext extends AuthContextState {
   dispatch: Dispatch<AuthActionType>;
-};
+}
