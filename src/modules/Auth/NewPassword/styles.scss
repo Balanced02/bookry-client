@@ -1,0 +1,42 @@
+@import 'assets/styles/variables';
+.new-password-constainer {
+  display: flex;
+  max-width: 140rem;
+  margin: auto;
+  height: 100vh;
+  padding: 5rem 6rem;
+  .notecard {
+    align-items: center;
+  }
+  main {
+    flex: 1%;
+    padding: 3rem;
+    .email-form {
+      padding: 4rem 8rem 12rem;
+      .lock-card {
+        text-align: center;
+        .heading {
+            font-size: 2.5rem;
+            padding: 2rem 0;
+            font-weight: 500;
+        }
+        .text {
+            font-size: 1.5rem;
+            line-height: 2.5rem;
+        }
+      }
+      .input-form {
+        padding: 3rem 0;
+        .input-layout {
+          padding: 1.7rem 0;
+        }
+      }
+      .confirm {
+        background-color: $dark;
+        p {
+          color: $white;
+        }
+      }
+    }
+  }
+}

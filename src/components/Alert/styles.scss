@@ -1,0 +1,79 @@
+@import 'assets/styles/variables';
+
+.alerts-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 1rem;
+  z-index: 99999;
+}
+
+.alert {
+  color: $white;
+  border-radius: 0.25rem;
+  width: 300px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0;
+  display: flex;
+  align-items: stretch;
+  transition: all 0.2s ease-in-out;
+  background: #222;
+  position: relative;
+  .close-btn {
+    border: none;
+    background: none;
+    padding: 0.25rem;
+    cursor: pointer;
+    display: flex;
+    border-radius: 0.25rem;
+    transition: background 0.2s ease-in-out;
+    &:hover {
+      background: #444;
+    }
+    svg {
+      stroke: $white;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}
+.alert.visible {
+  opacity: 1;
+  max-height: 200px;
+  margin-bottom: 1rem;
+}
+.alert__bar {
+  width: 0.5rem;
+  margin: 0.5rem;
+  background: #333;
+  border-radius: 0.25rem;
+}
+.alert__body {
+  padding: 1rem;
+  flex: 1;
+}
+.alert__end {
+  padding: 1rem 1rem 0 0;
+}
+.alert-INFO {
+  .alert__bar {
+    background: $info-bg;
+  }
+}
+.alert-ERROR {
+  .alert__bar {
+    background: $error-bg;
+  }
+}
+.alert-SUCCESS {
+  .alert__bar {
+    background: $success-bg;
+  }
+}

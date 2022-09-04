@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { JSXElementConstructor } from 'react';
 import './styles.scss';
-import { TeamT } from 'types';
+import { MemberT } from 'types';
 
-const MemberCard = ({ img, name, position }: TeamT) => {
+const MemberCard = ({ img, name, position }: MemberT) => {
+  const ImageComponent: JSXElementConstructor<any> = img;
   return (
     <div className="member-card">
-      <div className="img">{img}</div>
+      <div className="img">
+        <ImageComponent />
+      </div>
       <p>{name}</p>
       <p>{position}</p>
     </div>

@@ -1,9 +1,10 @@
 import React from 'react';
 import './styles.scss';
 import MemberCard from './MemberCard';
-import { ReactComponent as Avartar } from 'assets/svg/Avartar.svg';
+import { useMembers } from 'hooks/useMembers';
 
 const OurTeam = () => {
+  const { data } = useMembers();
   return (
     <div className="our-team">
       <div className="team-heading">
@@ -11,10 +12,9 @@ const OurTeam = () => {
         <p>meet our team</p>
       </div>
       <div className="member-cards">
-        <MemberCard name="John doe" position="CEO, Co-Founder" img={<Avartar />} />
-        <MemberCard name="Matthew fiz" position="Senior developer" img={<Avartar />} />
-        <MemberCard name="Benardo yesu" position="UI/UX designer" img={<Avartar />} />
-        <MemberCard name="Grandoel smith" position="Product manager" img={<Avartar />} />
+        {data?.map((member) => (
+          <MemberCard key={member.id} {...member} />
+        ))}
       </div>
     </div>
   );
