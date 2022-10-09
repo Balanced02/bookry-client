@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { LegacyRef, useEffect, useRef, useState, useMemo, ChangeEvent, Fragment } from 'react';
 import Editor from '@draft-js-plugins/editor';
-import { EditorState, DraftModel } from 'draft-js';
+import { EditorState, DraftModel, AtomicBlockUtils, DefaultDraftBlockRenderMap } from 'draft-js';
 import createInlineToolbarPlugin from '@draft-js-plugins/inline-toolbar';
 import createAlignmentPlugin from '@draft-js-plugins/alignment';
 import { handleKeyBindings, onTab, styleMap } from './utils';
@@ -27,6 +28,8 @@ import 'node_modules/@draft-js-plugins/inline-toolbar/lib/plugin.css';
 import './styles.scss';
 import buttonStyles from './buttonStyles.module.css';
 import toolbarStyles from './toolbarStyles.module.css';
+import Comment from 'components/Comment';
+import Immutable from 'immutable';
 
 type BookEditorT = {
   chapter: ChapterA;
@@ -60,17 +63,41 @@ const BookEditor = ({ chapter }: BookEditorT) => {
   }, []);
 
   const focusEditor = () => {
+    // @ts-ignore
     if (editorRef.current && editorRef.current.focus) {
+      // @ts-ignore
       editorRef.current.focus();
     }
   };
 
-  const onTabHandle = (e) => onTab(e, editorState, setEditorState);
+  const onTabHandle = (e: unknown) => onTab(e, editorState, setEditorState);
 
   const onHandleKeyBindings = (c: DraftModel.Constants.DraftEditorCommand) =>
     handleKeyBindings(c, editorState, setEditorState);
 
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value);
+
+  const insertBlock = () => {
+    const contentState = editorState.getCurrentContent();
+
+    const contentStateWithEntity = contentState.createEntity('COMMENT', 'IMMUTABLE');
+
+    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+
+    setEditorState(AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, 'Hello'));
+  };
+
+  const blockRenderMap = Immutable.Map({
+    COMMENT: {
+      // element is used during paste or html conversion to auto match your component;
+      // it is also retained as part of this.props.children and not stripped out
+      element: 'section',
+      wrapper: <Comment />,
+    },
+  });
+
+  // keep support for other draft default block types and add our myCustomBlock type
+  const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
 
   return (
     <div className="book-editor">
@@ -78,12 +105,13 @@ const BookEditor = ({ chapter }: BookEditorT) => {
         <input type="text" className="title" placeholder="Chapter 1" value={title} onChange={handleTitleChange} />
       </div>
       <div onClick={focusEditor} className="editor-container">
-        <div className="float-right">
+        <div className="float-right word-count">
           <span>
             <strong>Word Count:</strong> <WordCounter /> words
           </span>
         </div>
         <Editor
+          // @ts-ignore
           ref={editorRef}
           plugins={plugins}
           editorState={editorState}
@@ -92,6 +120,7 @@ const BookEditor = ({ chapter }: BookEditorT) => {
           handleKeyCommand={onHandleKeyBindings}
           spellCheck
           customStyleMap={styleMap}
+          blockRenderMap={extendedBlockRenderMap}
         />
         <InlineToolbar>
           {
@@ -103,7 +132,11 @@ const BookEditor = ({ chapter }: BookEditorT) => {
                 <UnderlineButton {...externalProps} />
                 <CodeButton {...externalProps} />
                 <CodeBlockButton {...externalProps} />
+                {/* @ts-ignore */}
                 <textAlignmentPlugin.TextAlignment {...externalProps} />
+                <button {...externalProps} onClick={insertBlock} onMouseDown={(e) => e.preventDefault()}>
+                  Comment
+                </button>
                 <hr />
                 <UnorderedListButton {...externalProps} />
                 <OrderedListButton {...externalProps} />

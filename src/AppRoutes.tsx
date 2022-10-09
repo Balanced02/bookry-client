@@ -9,6 +9,8 @@ import SignIn from 'modules/Auth/SignIn';
 import ForgotPassword from 'modules/Auth/ForgotPassword';
 import NewPassword from 'modules/Auth/NewPassword';
 import VerifyCode from 'modules/Auth/VerifyCode';
+import DashboardLayout from 'layout/DashboardLayout';
+import PrivateRoute from 'routes/PrivateRoute';
 
 const AppRoutes = () => {
   return (
@@ -16,7 +18,22 @@ const AppRoutes = () => {
       <AlertsContainer />
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/book/:id" element={<BookLayout />} />
+        <Route
+          path="/app/*"
+          element={
+            <PrivateRoute>
+              <DashboardLayout />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/book/:id"
+          element={
+            <PrivateRoute>
+              <BookLayout />
+            </PrivateRoute>
+          }
+        />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />

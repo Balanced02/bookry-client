@@ -68,6 +68,7 @@
     "i18next": "^21.8.11",
     "i18next-browser-languagedetector": "^6.1.4",
     "i18next-http-backend": "^1.4.1",
+    "immutable": "3.7.6",
     "install-peerdeps": "^3.0.3",
     "moment-timezone": "^0.5.34",
     "prop-types": "^15.8.1",
