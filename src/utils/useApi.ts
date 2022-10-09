@@ -20,7 +20,7 @@ interface HeaderOptios {
 
 export const useApi = () => {
   const { token } = useContext(AuthContext);
-  const callApi = ({ url, data, method, externalResource, passedToken }: ApiCallTypes) => {
+  const callApi = ({ url, data, method, externalResource, passedToken }: ApiCallTypes): Promise<any> => {
     if (!token && !passedToken) {
       // TODO: console.log(`Calling Api ${url}`);
       console.log(`Calling Api ${url}`);

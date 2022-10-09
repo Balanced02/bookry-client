@@ -1,10 +1,17 @@
 import { Dispatch } from 'react';
 
-export type AuthContextState = {
+export type UserType = {
   fullName: string;
   email: string;
+  avatarUrl?: string;
+  isEmailVerified: boolean;
+  userType?: 'user' | 'reader';
+};
+
+export type AuthContextState = {
+  user: UserType;
   token: string;
-  avatarUrl: string;
+  pageReady?: boolean;
 };
 
 export type AuthActionType = { type: string; payload: AuthContextState };
