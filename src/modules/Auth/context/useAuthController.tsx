@@ -3,10 +3,14 @@ import { AuthContextState, AuthActionType } from 'modules/Auth/types';
 import { SET_USER, LOG_OUT } from './types';
 
 const initialState: AuthContextState = {
-  fullName: '',
-  email: '',
   token: '',
-  avatarUrl: '',
+  user: {
+    fullName: '',
+    email: '',
+    avatarUrl: '',
+    isEmailVerified: false,
+  },
+  pageReady: false,
 };
 
 export function authReducer(state: AuthContextState, action: AuthActionType) {
@@ -15,10 +19,9 @@ export function authReducer(state: AuthContextState, action: AuthActionType) {
     case SET_USER:
       return {
         ...state,
-        fullName: payload.fullName,
-        email: payload.email,
         token: payload.token,
-        avatarUrl: payload.avatarUrl,
+        user: payload.user,
+        pageReady: true,
       };
     case LOG_OUT:
       localStorage.setItem('@auth', JSON.stringify(initialState));
@@ -38,15 +41,21 @@ const useAuthController = () => {
   const [state, dispatch] = useReducer<Reducer<AuthContextState, AuthActionType>>(authReducer, initialState);
 
   useEffect(() => {
-    if (state.email) {
+    if (state.token) {
       localStorage.setItem('@auth', JSON.stringify(state));
     }
   }, [state]);
 
   useEffect(() => {
-    const store = localStorage.getItem('@auth');
-    if (store) {
-      dispatch({ type: SET_USER, payload: JSON.parse(store) });
+    try {
+      const store = localStorage.getItem('@auth');
+      let data = initialState;
+      if (store) {
+        data = JSON.parse(store);
+      }
+      dispatch({ type: SET_USER, payload: data });
+    } catch (error) {
+      dispatch({ type: SET_USER, payload: initialState });
     }
   }, []);
 

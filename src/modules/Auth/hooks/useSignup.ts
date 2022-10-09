@@ -14,12 +14,15 @@ export const useSignup = () => {
     {
       onSuccess: async (res) => {
         // TODO: dispatch all neccesary data
+        console.log('res', res);
         showSuccess({ title: 'Signup Successful!', description: 'Verify you account' });
         navigate('/signin');
       },
       onError: async (error: AxiosError) => {
         // TODO: dispatch all neccesary data
         console.log('registerError', error);
+        // TODO: Read and format error message;
+        showError({ title: 'Registration Error', description: 'Email already exists' });
         // if (error.response?.data.message === 'email_exist') {
         //   showError({ title: 'Signup Error', description: 'Email already exist you dummy' });
         // }

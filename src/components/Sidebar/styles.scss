@@ -1,0 +1,46 @@
+@import 'assets/styles/variables';
+
+.book-sidebar {
+  width: 25rem;
+  height: 100vh;
+  background-color: $dark-background;
+  color: $white;
+  font-size: 1.5rem;
+  left: -25rem;
+  transition: left 0.3s ease 0ms;
+  &.open {
+    left: 0;
+  }
+  .title-container {
+    padding: 1.5rem;
+  }
+  position: fixed;
+  .add-title {
+    padding: 1.5rem;
+    span {
+      font-weight: bold;
+      color: $primary-color;
+      cursor: pointer;
+    }
+  }
+  .title {
+    color: $white;
+  }
+  .chapters {
+    a.chapter-item {
+      font-size: 1.5rem;
+      background: transparent;
+      color: $white;
+      outline: none;
+      border: none;
+      padding: 1.5rem;
+      display: block;
+      text-decoration: none;
+      width: 100%;
+      text-align: left;
+      &:hover, &.active {
+        background-color: rgba(255, 255, 255, 0.1);;
+      }
+    }
+  }
+}
