@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import Sidebar from 'components/Sidebar';
 import { ReactComponent as ChevronLeft } from 'assets/svg/ChevronLeft.svg';
 import { ReactComponent as ChevronRight } from 'assets/svg/ChevronRight.svg';
@@ -17,7 +17,7 @@ const DashboardLayout = () => {
     <div className="dashboard-layout">
       <Sidebar toggleSidebar={setIsOpen} isOpen={isOpen} menu={menuData} />
       <main className={isOpen ? 'sidebar-open' : ''}>
-        <div className="book-title">
+        <div className="title-container">
           <button className="icon" onClick={toggleSidebar}>
             {isOpen ? <ChevronLeft /> : <ChevronRight />}
           </button>

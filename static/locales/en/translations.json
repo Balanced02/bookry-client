@@ -1,1 +1,14 @@
-{}
+{
+  "app": {
+    "mybooks": {
+      "summary": "Hello {{firstName}}, here is what's new since your last visit",
+      "lifetimeEarnings": "Lifetime Earnings",
+      "unfinishedBooks": "Unfinished Books",
+      "newReaders": "New Readers",
+      "newComments": "New Comments",
+      "followers": "Followers",
+      "editorMessages": "Editor Messages",
+      "inputPlaceholder": "Enter a new book title"
+    }
+  }
+}

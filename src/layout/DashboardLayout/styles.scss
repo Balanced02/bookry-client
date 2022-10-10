@@ -7,5 +7,19 @@
     &.sidebar-open {
       padding-left: 26.5rem;
     }
+    .title-container {
+      display: flex;
+      align-items: center;
+      .icon {
+        padding: 10px 10px 10px 0px;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+      };
+    }
+    .dashboard-content {
+      padding: 1rem;
+    }
   }
 }

@@ -1,0 +1,76 @@
+@import 'assets/styles/variables';
+
+.my-books {
+  max-width: 900px;
+  margin: auto;
+  .summary {
+    border-left: 0.316rem solid $dark;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    .title {
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+    .d-flex {
+      flex-wrap: wrap;
+    }
+    .summary-card {
+      flex-basis: 30%;
+      padding: 1rem;
+      dd {
+        font-weight: 600;
+        font-size: 2.5rem;
+      }
+      dt {
+        font-weight: 400;
+        color: $light-text;
+        font-size: 1.4rem;
+      }
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .create {
+      width: 50%;
+    }
+  }
+  .create-book {
+    margin-left: 2.5rem;
+    padding: 3.5rem;
+    background-color: $light-gray;
+    border: 0.316rem solid $light-gray;
+    margin-top: 3rem;
+    border-radius: 5px;
+    .input-container {
+      background-color: $white;
+      border: 1px solid $white;
+      display: flex;
+      align-items: center;
+      padding: 0.7rem 1rem;
+      border-radius: 5px;
+      margin-top: 2rem;
+      cursor: text;
+      &:focus-within {
+        border: 1px solid $success-bg;
+      }
+      input {
+        width: 100%;
+        outline: none;
+        border: none;
+        height: 3rem;
+        font-size: 1.6rem;
+      }
+      button {
+        min-width: 9rem;
+        background-color: $gray-bg;
+        color: $white;
+        padding: 1rem 3rem;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    }
+  }
+  .books-list {
+    margin-top: 3rem;
+    padding: 2rem;
+  }
+}

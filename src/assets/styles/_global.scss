@@ -51,7 +51,6 @@ html {
 
 body {
     font-family: 'Open Sans', sans-serif;
-    line-height: 1;
     background-color: #FFFBEE;
     font-size: 1.5rem;
 
@@ -73,4 +72,8 @@ body {
 
 .float-right {
     float: right
+}
+
+.d-flex {
+    display: flex;
 }
