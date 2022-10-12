@@ -30,9 +30,11 @@ import buttonStyles from './buttonStyles.module.css';
 import toolbarStyles from './toolbarStyles.module.css';
 import Comment from 'components/Comment';
 import Immutable from 'immutable';
+import { useDebounce } from 'hooks/helpers/useDebounce';
 
 type BookEditorT = {
   chapter: ChapterA;
+  updateTitle: (title: string) => Promise<any>
 };
 
 const alignmentPlugin = createAlignmentPlugin();
@@ -46,10 +48,18 @@ const textAlignmentPlugin = createTextAlignmentPlugin();
 const counterPlugin = createCounterPlugin();
 const { WordCounter } = counterPlugin;
 
-const BookEditor = ({ chapter }: BookEditorT) => {
+const BookEditor = ({ chapter, updateTitle }: BookEditorT) => {
   const [editorState, setEditorState] = useState<EditorState>(EditorState.createEmpty());
   const editorRef = useRef<LegacyRef<Editor> | undefined>();
   const [title, setTitle] = useState<string>(chapter.title);
+
+  const debouncedTitle = useDebounce(title);
+
+  useEffect(() => {
+    if (debouncedTitle !== chapter.title) {
+      updateTitle(debouncedTitle);
+    }
+  }, [debouncedTitle]);
 
   const [plugins, InlineToolbar] = useMemo(() => {
     return [
@@ -102,7 +112,7 @@ const BookEditor = ({ chapter }: BookEditorT) => {
   return (
     <div className="book-editor">
       <div className="title-container">
-        <input type="text" className="title" placeholder="Chapter 1" value={title} onChange={handleTitleChange} />
+        <input type="text" className="title" placeholder="Title" value={title} onChange={handleTitleChange} />
       </div>
       <div onClick={focusEditor} className="editor-container">
         <div className="float-right word-count">

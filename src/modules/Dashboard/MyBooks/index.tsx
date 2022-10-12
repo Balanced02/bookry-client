@@ -1,19 +1,48 @@
-import React, { ChangeEvent, useContext, useRef, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useContext, useRef, useState } from 'react';
 import Head from 'components/Head';
 import AuthContext from 'modules/Auth/context/AuthContext';
 import { useTranslation } from 'react-i18next';
 import './styles.scss';
+import Button from 'components/Button';
+import { useAlert, useBooks } from 'hooks';
+import { useNavigate } from 'react-router';
 
 const MyBooks = () => {
   const { t } = useTranslation();
   const { user } = useContext(AuthContext);
-  const [bookName, setBookName] = useState('');
+  const [title, setTitme] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const { createBook } = useBooks();
+  const { showSuccess, showError } = useAlert();
+  const navigate = useNavigate();
 
-  const handleBookNameChange = (e: ChangeEvent<HTMLInputElement>) => setBookName(e.target.value);
+  const handleBookNameChange = (e: ChangeEvent<HTMLInputElement>) => setTitme(e.target.value);
 
   const inputRef = useRef<HTMLInputElement | undefined>();
 
   const focusInput = () => inputRef.current?.focus();
+
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!title || title.length < 3) {
+      return showError({
+        title: 'Title validation failed',
+        description: 'Please provide a valid title above three letters',
+      });
+    }
+    setIsLoading(true);
+    createBook({ title })
+      .then(({ data }) => {
+        setIsLoading(false);
+        console.log(data);
+        showSuccess({
+          title: 'Created',
+          description: `${title} is created successfully. Start writing something awesome`,
+        });
+        navigate(`/book/${data.sid}`);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="my-books dashboard-content">
@@ -50,16 +79,16 @@ const MyBooks = () => {
           Write and format your book in the Bookry Book Editor, then instantly typeset them to portable document format
           (pdf).
         </p>
-        <form className="input-container" onClick={focusInput}>
+        <form className="input-container" onClick={focusInput} onSubmit={onSubmit}>
           <input
             ref={inputRef}
             placeholder={t('app.mybooks.inputPlaceholder')}
             name="title"
             type="text"
             onChange={handleBookNameChange}
-            value={bookName}
+            value={title}
           />
-          <button>Create</button>
+          <Button text="Create" type="dark" className="submit" disabled={isLoading} />
         </form>
       </div>
       <div className="books-list">

@@ -9,6 +9,7 @@ export interface BookA {
   title: string;
   status: 'published' | 'pending' | 'reviewing';
   user: string;
+  sid: string;
   description?: string;
   coverImage?: string;
   chapters?: Array<ChapterA>;

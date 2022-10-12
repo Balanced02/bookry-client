@@ -2,9 +2,9 @@ import { ReactNode } from 'react';
 
 export type ButtonProps = {
   text: string;
-  onPress: () => void;
+  onPress?: (e: any) => void;
   onMouseDown?: (event: React.MouseEvent<HTMLInputElement>) => void;
-  type?: string;
+  type?: 'dark' | 'light';
   icon?: ReactNode;
   loading?: boolean;
   disabled?: boolean;

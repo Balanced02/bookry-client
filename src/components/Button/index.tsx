@@ -18,8 +18,8 @@ const Button = ({ text, onPress, type, icon, loading, disabled, className }: But
   return (
     <button
       className={`button-container ${type && type}-bg ${shake ? 'shake' : null}} ${className}`}
-      onClick={() => {
-        onPress();
+      onClick={(e) => {
+        onPress?.(e);
         shakeTimer();
       }}
       disabled={loading || disabled}

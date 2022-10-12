@@ -2,7 +2,8 @@ import { useContext } from 'react';
 import axios, { AxiosRequestHeaders, Method } from 'axios';
 import AuthContext from '../modules/Auth/context/AuthContext';
 
-export const SERVER_DOMAIN = 'https://bookry-server.herokuapp.com/api/v1'; //TODO; domain URL
+// export const SERVER_DOMAIN = 'https://bookry-server.herokuapp.com/api/v1'; //TODO; domain URL
+export const SERVER_DOMAIN = 'http://localhost:4000/api/v1'; //TODO; domain URL
 
 export type ApiCallTypes = {
   url: string;
@@ -54,7 +55,32 @@ export const useApi = () => {
     });
   };
 
+  const queryApi = ({ url, data, method, externalResource, passedToken }: ApiCallTypes): Promise<any> => {
+    if (!token && !passedToken) {
+      // TODO: console.log(`Calling Api ${url}`);
+      console.log(`Calling Api ${url}`);
+    }
+    const axiosOptions: HeaderOptios = {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      url: externalResource ? url : `${SERVER_DOMAIN}${url}`,
+      method: method || 'get',
+    };
+    if (token || passedToken) {
+      axiosOptions.headers.Authorization = `${`Bearer ${passedToken ? passedToken : token}`}`;
+      // TODO:  console.log(`Calling Secured Api ${url}`);
+      console.log(`Calling Secured Api ${url}`);
+    }
+    if (data) {
+      axiosOptions.data = data;
+    }
+    return axios(axiosOptions);
+  };
+
   return {
     callApi,
+    queryApi,
   };
 };
